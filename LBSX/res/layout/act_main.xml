@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/ll_tab"
+        android:layout_width="match_parent"
+        android:layout_height="51.5dip"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/darker_gray"
+        android:orientation="horizontal" >
+
+        <RadioGroup
+            android:id="@+id/main_tab_group"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_gravity="bottom"
+            android:background="@color/radio_background"
+            android:gravity="bottom"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/rb_route"
+                style="@style/TabButton"
+                android:layout_weight="1.0"
+                android:background="@drawable/radio_selector"
+                android:checked="true"
+                android:drawableTop="@drawable/radio_img"
+                android:gravity="center"
+                android:text="路线" />
+
+            <RadioButton
+                android:id="@+id/rb_info"
+                style="@style/TabButton"
+                android:layout_weight="1.0"
+                android:background="@drawable/radio_selector"
+                android:drawableTop="@drawable/radio_img"
+                android:gravity="center"
+                android:text="信息" />
+
+            <RadioButton
+                android:id="@+id/rb_my"
+                style="@style/TabButton"
+                android:layout_weight="1.0"
+                android:background="@drawable/radio_selector"
+                android:drawableTop="@drawable/radio_img"
+                android:gravity="center"
+                android:text="我的" />
+
+            <RadioButton
+                android:id="@+id/rb_find"
+                style="@style/TabButton"
+                android:layout_weight="1.0"
+                android:background="@drawable/radio_selector"
+                android:drawableTop="@drawable/radio_img"
+                android:gravity="center"
+                android:text="发现" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/ll_tab" />
+
+</RelativeLayout>
