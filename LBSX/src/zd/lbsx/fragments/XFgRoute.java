@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 public class XFgRoute extends XFgBase {
+	
+	//
+	//
 
 	@Override
 	protected int setFragmentView() {
