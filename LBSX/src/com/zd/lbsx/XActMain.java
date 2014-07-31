@@ -19,6 +19,7 @@ public class XActMain extends XActBase implements
 	@Override
 	public void onClick(View v) {
 		//¼àÌý°´Å¥°´¶¯
+		//this is the test message 
 	}
 
 	@Override
