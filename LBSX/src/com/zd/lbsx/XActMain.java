@@ -1,5 +1,7 @@
 package com.zd.lbsx;
-
+/*
+ * create by Juice Zhu 2014.7.31
+ */
 import com.zd.lbsx.fragments.XFgBase;
 import com.zd.lbsx.fragments.XFgFind;
 import com.zd.lbsx.fragments.XFgInfo;
