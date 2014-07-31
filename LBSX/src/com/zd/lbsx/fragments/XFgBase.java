@@ -1,6 +1,4 @@
-package zd.lbsx.fragments;
-
-import com.zd.lbsx.R;
+package com.zd.lbsx.fragments;
 
 import android.content.Context;
 import android.os.Bundle;

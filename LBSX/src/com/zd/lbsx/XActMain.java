@@ -1,10 +1,11 @@
 package com.zd.lbsx;
 
-import zd.lbsx.fragments.XFgBase;
-import zd.lbsx.fragments.XFgFind;
-import zd.lbsx.fragments.XFgInfo;
-import zd.lbsx.fragments.XFgMy;
-import zd.lbsx.fragments.XFgRoute;
+import com.zd.lbsx.fragments.XFgBase;
+import com.zd.lbsx.fragments.XFgFind;
+import com.zd.lbsx.fragments.XFgInfo;
+import com.zd.lbsx.fragments.XFgMy;
+import com.zd.lbsx.fragments.XFgRoute;
+
 import android.view.View;
 import android.widget.RadioGroup;
 

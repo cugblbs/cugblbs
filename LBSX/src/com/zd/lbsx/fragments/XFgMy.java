@@ -1,4 +1,4 @@
-package zd.lbsx.fragments;
+package com.zd.lbsx.fragments;
 
 import com.zd.lbsx.R;
 

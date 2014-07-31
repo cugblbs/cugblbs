@@ -1,14 +1,14 @@
-package zd.lbsx.fragments;
+package com.zd.lbsx.fragments;
 
 import com.zd.lbsx.R;
 
 import android.view.View;
 
-public class XFgFind extends XFgBase {
+public class XFgInfo extends XFgBase {
 
 	@Override
 	protected int setFragmentView() {
-		return R.layout.fg_find;
+		return R.layout.fg_info;
 	}
 
 	@Override
