@@ -30,7 +30,8 @@ public final class R {
         public static final int radio_selector=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
+        public static final int action_settings=0x7f090009;
+        public static final int bmapsView=0x7f090008;
         public static final int content_frame=0x7f090007;
         public static final int iv_loading=0x7f090000;
         public static final int ll_tab=0x7f090001;

@@ -11,7 +11,6 @@ public abstract class XFgBase extends Fragment {
 
 	private Context mContext;
 	private LayoutInflater mInflater;
-	
     /**
      * 初始化布局界面
      * @return 返回布局界面layout的id
