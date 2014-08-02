@@ -28,11 +28,15 @@ public final class R {
         public static final int img_loading=0x7f020001;
         public static final int radio_img=0x7f020002;
         public static final int radio_selector=0x7f020003;
+        public static final int search=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f090009;
-        public static final int bmapsView=0x7f090008;
+        public static final int action_settings=0x7f090012;
+        public static final int bmapsView=0x7f09000d;
+        public static final int bt_search_route=0x7f09000f;
         public static final int content_frame=0x7f090007;
+        public static final int destSpnnner=0x7f09000b;
+        public static final int destination=0x7f09000a;
         public static final int iv_loading=0x7f090000;
         public static final int ll_tab=0x7f090001;
         public static final int main_tab_group=0x7f090002;
@@ -40,14 +44,22 @@ public final class R {
         public static final int rb_info=0x7f090004;
         public static final int rb_my=0x7f090005;
         public static final int rb_route=0x7f090003;
+        public static final int route_info=0x7f090010;
+        public static final int search=0x7f09000c;
+        public static final int spinner=0x7f09000e;
+        public static final int spinner_item=0x7f090011;
+        public static final int start=0x7f090008;
+        public static final int startSpinner=0x7f090009;
     }
     public static final class layout {
         public static final int act_loading=0x7f030000;
         public static final int act_main=0x7f030001;
-        public static final int fg_find=0x7f030002;
-        public static final int fg_info=0x7f030003;
-        public static final int fg_my=0x7f030004;
-        public static final int fg_route=0x7f030005;
+        public static final int act_search_route=0x7f030002;
+        public static final int fg_find=0x7f030003;
+        public static final int fg_info=0x7f030004;
+        public static final int fg_my=0x7f030005;
+        public static final int fg_route=0x7f030006;
+        public static final int spinner_item=0x7f030007;
     }
     public static final class menu {
         public static final int act_loading=0x7f080000;
