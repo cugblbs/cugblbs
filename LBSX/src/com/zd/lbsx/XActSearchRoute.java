@@ -25,7 +25,7 @@ public class XActSearchRoute extends XActBase implements OnItemSelectedListener{
 			Intent intent=new Intent(this,XActMain.class);
 			intent.putExtra("start", startSpinner.getSelectedItem().toString());
 			intent.putExtra("end", endSpinner.getSelectedItem().toString());
-//			startActivity(intent);
+			startActivity(intent);
 		}
 	}
 
@@ -52,7 +52,7 @@ public class XActSearchRoute extends XActBase implements OnItemSelectedListener{
 	protected void initData() {
 
 		list.add("中国地质大学(北京)9号楼");
-		list.add("中国地质大学(北京)图书馆");
+		list.add("中国地质大学-东门");
 		AdpSpinner adpSpinner = new AdpSpinner(this, list);
 		startSpinner.setAdapter(adpSpinner);
 		endSpinner.setAdapter(adpSpinner);
