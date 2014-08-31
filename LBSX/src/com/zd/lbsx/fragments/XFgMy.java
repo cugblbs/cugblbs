@@ -56,7 +56,6 @@ public class XFgMy extends XFgBase implements OnClickListener{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//”√¡Àwebview
 	}
 	
 	@Override
