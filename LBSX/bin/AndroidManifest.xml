@@ -76,6 +76,14 @@
             android:label="@string/app_name"
             android:screenOrientation="sensor" >
         </activity>
+        <activity
+            android:name="com.zd.lbsx.fragments.XFgInfo">
+        </activity>
+         <activity
+            android:name="com.zd.lbsx.XActInfoItemDetails">
+        </activity>
+        
+        
     </application>
 
 </manifest>

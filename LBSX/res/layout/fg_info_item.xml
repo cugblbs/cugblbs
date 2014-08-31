@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="4dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="12dp"
+    android:paddingTop="12dp" >
+
+    <ImageView
+        android:id="@+id/ItemImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+    <!-- 定义textview，作为列表项的一部分 -->
+
+    <TextView
+        android:id="@+id/ItemTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="55dp"
+        android:text="TextView01"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/ItemBrief"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ItemTitle"
+        android:paddingLeft="55dp"
+        android:text="TextView02"
+        android:textColor="#A9A9A9"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/ItemTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="100dp"
+        android:paddingTop="13dp"
+        android:textColor="#A9A9A9"
+        android:textSize="12dp" />
+
+</RelativeLayout>
