@@ -33,14 +33,11 @@ import com.zd.lbsx.listener.XMKSearchListener;
 @SuppressLint("ValidFragment")
 public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		OnClickListener {
-
 	private Spinner spin_address;
 	private Button bt_search_route;
-
 	private static BMapManager bMapManager;
 	private MapView mapView;
 	private MKSearch mkSearch;
-
 	private ArrayList<String> list = new ArrayList<String>();
 	private String startString;
 	private String endString;
@@ -74,8 +71,8 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 
 	@Override
 	protected void initData() {
-		// ArrayAdapter<String> spinAdapter = new ArrayAdapter<String>(
-		// getActivity(), R.layout.spinner_item, new String[] {
+		 //ArrayAdapter<String> spinAdapter = new ArrayAdapter<String>(
+		//getActivity(), R.layout.spinner_item, new String[] {
 		// "中国地质大学(北京)9号楼", "中国地质大学(北京)综合楼" });
 
 		list.add("中国地质大学(北京)9号楼");
