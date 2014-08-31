@@ -77,6 +77,7 @@
             android:screenOrientation="sensor" >
         </activity>
         <activity
+<<<<<<< HEAD
             android:name="com.zd.lbsx.fragments.XFgInfo">
         </activity>
          <activity
@@ -84,6 +85,10 @@
         </activity>
         
         
+=======
+            android:name="com.zd.lbsx.PersonalPage">
+         </activity>
+>>>>>>> 2786ceab4b3d1a788eedb9f1e44a220270302209
     </application>
 
 </manifest>

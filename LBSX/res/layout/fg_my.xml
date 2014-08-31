@@ -1,10 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#00f"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
-    
-    
+
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="9" />
+
+    <TextView
+        android:id="@+id/ll1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="发帖区" />
+
+    <TextView
+        android:id="@+id/TieziTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="标题:" >
+    </TextView>
+
+    <EditText
+        android:id="@+id/Biaoti"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/TieziContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="内容:" >
+    </TextView>
+
+    <EditText
+        android:id="@+id/Neirong"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:editable="true" >
+    </EditText>
+
+    <Button
+        android:id="@+id/Fatie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="发帖" >
+    </Button>
 
 </LinearLayout>

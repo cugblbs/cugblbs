@@ -33,7 +33,6 @@ public abstract class XFgBase extends Fragment {
      */
     protected abstract void initData();
     
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
     	super.onCreate(savedInstanceState);
