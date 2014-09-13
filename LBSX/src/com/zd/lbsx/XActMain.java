@@ -22,7 +22,7 @@ public class XActMain extends XActBase implements
 	public void onClick(View v) {
 	}
 
-	@Override
+	@Override 
 	protected int setContentLayout() {
 		return R.layout.act_main;
 	}
@@ -34,7 +34,7 @@ public class XActMain extends XActBase implements
 
 	@Override
 	protected void initListener() {
-		radioGroup.setOnCheckedChangeListener(this);
+		radioGroup.setOnCheckedChangeListener(this); 
 	}
 
 	@Override

@@ -53,6 +53,17 @@ public class XActSearchRoute extends XActBase implements OnItemSelectedListener{
 
 		list.add("中国地质大学(北京)9号楼");
 		list.add("中国地质大学-东门");
+		list.add("中国地质大学海洋学院");
+		list.add("中国地质大学综合楼");
+		list.add("中国地质大学19号楼");
+		list.add("中国地质大学18号楼");
+		list.add("中国地质大学学生食堂");
+		list.add("中国地质大学教工食堂");
+		list.add("中国地质大学夏日广场");
+		list.add("中国地质大学教3楼");
+		list.add("中国地质大学教2楼");
+		list.add("中国地质大学运动场");
+		list.add("中国地质大学图书馆");
 		AdpSpinner adpSpinner = new AdpSpinner(this, list);
 		startSpinner.setAdapter(adpSpinner);
 		endSpinner.setAdapter(adpSpinner);
