@@ -24,27 +24,49 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-<<<<<<< HEAD
-        public static final int cat=0x7f020000;
-        public static final int dog=0x7f020001;
-        public static final int friend=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int img_loading=0x7f020004;
-        public static final int love=0x7f020005;
-        public static final int lovely=0x7f020006;
-        public static final int radio_img=0x7f020007;
-        public static final int radio_selector=0x7f020008;
-        public static final int search=0x7f020009;
+        public static final int a=0x7f020000;
+        public static final int b=0x7f020001;
+        public static final int c=0x7f020002;
+        public static final int cat=0x7f020003;
+        public static final int cugb=0x7f020004;
+        public static final int d=0x7f020005;
+        public static final int dog=0x7f020006;
+        public static final int e=0x7f020007;
+        public static final int f=0x7f020008;
+        public static final int friend=0x7f020009;
+        public static final int g=0x7f02000a;
+        public static final int h=0x7f02000b;
+        public static final int i=0x7f02000c;
+        public static final int ic_launcher=0x7f02000d;
+        public static final int img_loading=0x7f02000e;
+        public static final int j=0x7f02000f;
+        public static final int love=0x7f020010;
+        public static final int lovely=0x7f020011;
+        public static final int q=0x7f020012;
+        public static final int radio_img=0x7f020013;
+        public static final int radio_selector=0x7f020014;
+        public static final int search=0x7f020015;
     }
     public static final class id {
+        public static final int HuifuList=0x7f090022;
         public static final int ItemBrief=0x7f090013;
         public static final int ItemImage=0x7f090011;
         public static final int ItemTime=0x7f090014;
         public static final int ItemTitle=0x7f090012;
+        public static final int JutiTitle=0x7f09001d;
         public static final int ListView_Info=0x7f09000f;
+        public static final int Louzhu=0x7f09001f;
+        public static final int LouzhuContent=0x7f090021;
+        public static final int LouzhuID=0x7f090020;
+        public static final int Personaltouxiang=0x7f090024;
+        public static final int Personauthor=0x7f090025;
+        public static final int PersonlName=0x7f09001e;
         public static final int RelativeLayout01=0x7f090010;
+        public static final int Reply=0x7f090023;
+        public static final int Return=0x7f09001c;
         public static final int TextHead=0x7f09000e;
-        public static final int action_settings=0x7f09001a;
+        public static final int action_settings=0x7f090027;
+        public static final int author=0x7f09001a;
         public static final int bmapsView=0x7f090015;
         public static final int bt_search_route=0x7f090017;
         public static final int content_frame=0x7f090008;
@@ -60,9 +82,11 @@ public final class R {
         public static final int route_info=0x7f090018;
         public static final int search=0x7f09000d;
         public static final int spinner=0x7f090016;
-        public static final int spinner_item=0x7f090019;
+        public static final int spinner_item=0x7f090026;
         public static final int start=0x7f090009;
         public static final int startSpinner=0x7f09000a;
+        public static final int title=0x7f09001b;
+        public static final int touxiang=0x7f090019;
         public static final int webview=0x7f090000;
     }
     public static final class layout {
@@ -75,80 +99,10 @@ public final class R {
         public static final int fg_info_item=0x7f030006;
         public static final int fg_my=0x7f030007;
         public static final int fg_route=0x7f030008;
-        public static final int spinner_item=0x7f030009;
-=======
-        public static final int a=0x7f020000;
-        public static final int b=0x7f020001;
-        public static final int c=0x7f020002;
-        public static final int cugb=0x7f020003;
-        public static final int d=0x7f020004;
-        public static final int e=0x7f020005;
-        public static final int f=0x7f020006;
-        public static final int g=0x7f020007;
-        public static final int h=0x7f020008;
-        public static final int i=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
-        public static final int img_loading=0x7f02000b;
-        public static final int j=0x7f02000c;
-        public static final int q=0x7f02000d;
-        public static final int radio_img=0x7f02000e;
-        public static final int radio_selector=0x7f02000f;
-        public static final int search=0x7f020010;
-    }
-    public static final class id {
-        public static final int Biaoti=0x7f090010;
-        public static final int Fatie=0x7f090013;
-        public static final int HuifuList=0x7f090021;
-        public static final int JutiTitle=0x7f09001c;
-        public static final int Louzhu=0x7f09001e;
-        public static final int LouzhuContent=0x7f090020;
-        public static final int LouzhuID=0x7f09001f;
-        public static final int Neirong=0x7f090012;
-        public static final int Personaltouxiang=0x7f090023;
-        public static final int Personauthor=0x7f090024;
-        public static final int PersonlName=0x7f09001d;
-        public static final int Reply=0x7f090022;
-        public static final int Return=0x7f09001b;
-        public static final int TieziContent=0x7f090011;
-        public static final int TieziTitle=0x7f09000f;
-        public static final int action_settings=0x7f090026;
-        public static final int author=0x7f090019;
-        public static final int bmapsView=0x7f090014;
-        public static final int bt_search_route=0x7f090016;
-        public static final int content_frame=0x7f090007;
-        public static final int destSpnnner=0x7f09000b;
-        public static final int destination=0x7f09000a;
-        public static final int iv_loading=0x7f090000;
-        public static final int ll1=0x7f09000e;
-        public static final int ll_tab=0x7f090001;
-        public static final int main_tab_group=0x7f090002;
-        public static final int rb_find=0x7f090006;
-        public static final int rb_info=0x7f090004;
-        public static final int rb_my=0x7f090005;
-        public static final int rb_route=0x7f090003;
-        public static final int route_info=0x7f090017;
-        public static final int search=0x7f09000c;
-        public static final int spinner=0x7f090015;
-        public static final int spinner_item=0x7f090025;
-        public static final int start=0x7f090008;
-        public static final int startSpinner=0x7f090009;
-        public static final int title=0x7f09001a;
-        public static final int touxiang=0x7f090018;
-        public static final int webview=0x7f09000d;
-    }
-    public static final class layout {
-        public static final int act_loading=0x7f030000;
-        public static final int act_main=0x7f030001;
-        public static final int act_search_route=0x7f030002;
-        public static final int fg_find=0x7f030003;
-        public static final int fg_info=0x7f030004;
-        public static final int fg_my=0x7f030005;
-        public static final int fg_route=0x7f030006;
-        public static final int item=0x7f030007;
-        public static final int onetiezi=0x7f030008;
-        public static final int personalitem=0x7f030009;
-        public static final int spinner_item=0x7f03000a;
->>>>>>> 2786ceab4b3d1a788eedb9f1e44a220270302209
+        public static final int item=0x7f030009;
+        public static final int onetiezi=0x7f03000a;
+        public static final int personalitem=0x7f03000b;
+        public static final int spinner_item=0x7f03000c;
     }
     public static final class menu {
         public static final int act_loading=0x7f080000;

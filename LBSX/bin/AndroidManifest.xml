@@ -39,7 +39,7 @@
     <uses-permission android:name="android.permission.ACCESS_GPS" />
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
     <supports-screens
@@ -77,18 +77,12 @@
             android:screenOrientation="sensor" >
         </activity>
         <activity
-<<<<<<< HEAD
             android:name="com.zd.lbsx.fragments.XFgInfo">
         </activity>
          <activity
             android:name="com.zd.lbsx.XActInfoItemDetails">
         </activity>
-        
-        
-=======
             android:name="com.zd.lbsx.PersonalPage">
-         </activity>
->>>>>>> 2786ceab4b3d1a788eedb9f1e44a220270302209
     </application>
 
 </manifest>
