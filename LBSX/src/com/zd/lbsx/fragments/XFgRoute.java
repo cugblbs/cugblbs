@@ -2,6 +2,7 @@ package com.zd.lbsx.fragments;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import android.annotation.SuppressLint;
@@ -76,7 +77,19 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		// "中国地质大学(北京)9号楼", "中国地质大学(北京)综合楼" });
 
 		list.add("中国地质大学(北京)9号楼");
-		list.add("中国地质大学(北京)图书馆");
+		list.add("中国地质大学-东门");
+		list.add("中国地质大学海洋学院");
+		list.add("中国地质大学综合楼");
+		list.add("中国地质大学19号楼");
+		list.add("中国地质大学18号楼");
+		list.add("中国地质大学学生食堂");
+		list.add("中国地质大学教工食堂");
+		list.add("中国地质大学夏日广场");
+		list.add("中国地质大学教3楼");
+		list.add("中国地质大学教2楼");
+		list.add("中国地质大学运动场");
+		list.add("中国地质大学图书馆");
+		
 		AdpSpinner spinAdapter = new AdpSpinner(getActivity(), list);
 		spin_address.setAdapter(spinAdapter);
 	}
@@ -189,15 +202,22 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		@Override
 		protected Void doInBackground(Void... arg0) {
 			try {
-				Address startAddress = geocoder.getFromLocationName(
-						"北京,中国地质大学,教学楼", 1).get(0);
+				List<Address> tempList = new ArrayList<Address>();
+				while (tempList.size() == 0) {
+					tempList = geocoder.getFromLocationName(startString, 1);
+				}
+				Address startAddress = tempList.get(0);
+				tempList.clear();
 				double slon = startAddress.getLongitude();
 				double slat = startAddress.getLatitude();	
-				sgeoPoint = new GeoPoint((int) slat, (int) slon);
-				Address endAddress = geocoder.getFromLocationName("北京,中国地质大学,", 1).get(0);
+				sgeoPoint = new GeoPoint((int) (slat*1E6), (int)(slon*1E6));
+				while (tempList.size() == 0) {
+					tempList = geocoder.getFromLocationName(endString, 1);
+				}
+				Address endAddress = tempList.get(0);
 				double elon = endAddress.getLongitude();
 				double elat = endAddress.getLatitude();
-				egeoPoint = new GeoPoint((int) elat, (int) elon);
+				egeoPoint = new GeoPoint((int)(elat*1E6), (int)(elon*1E6));
 				startMkPlanNode.pt = sgeoPoint;
 				endMkPlanNode.pt = egeoPoint;
 			} catch (IOException e) {

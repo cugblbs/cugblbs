@@ -59,6 +59,7 @@ public class XMKSearchListener implements MKSearchListener {
 
 	}
 
+ 
 	@Override
 	public void onGetPoiResult(MKPoiResult arg0, int arg1, int arg2) {
 		// TODO Auto-generated method stub

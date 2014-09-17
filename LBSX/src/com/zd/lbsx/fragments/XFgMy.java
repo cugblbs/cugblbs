@@ -31,6 +31,7 @@ public class XFgMy extends XFgBase implements OnClickListener {
 		contentWebView = (WebView) v.findViewById(R.id.webview);
 		// ∆Ù”√javascript
 		contentWebView.getSettings().setJavaScriptEnabled(true);
+<<<<<<< HEAD
 		contentWebView.setWebChromeClient(new WebChromeClient() {
 			@Override
 			public void onProgressChanged(WebView view, int newProgress) {
@@ -49,6 +50,15 @@ public class XFgMy extends XFgBase implements OnClickListener {
 			public void onPageFinished(WebView view, String url) {
 				Log.i("page finished-------------------->", "page finished");
 				super.onPageFinished(view, url);
+=======
+		contentWebView.setWebViewClient(new MyWebViewClient());
+		contentWebView.loadUrl("http://192.168.191.1:8080/Android/Start");
+		button.setOnClickListener(new Button.OnClickListener() {
+			public void onClick(View v) { 
+				String Title = title.getText().toString();
+				String Content = content.getText().toString();
+				contentWebView.loadUrl("javascript:javacalljs('" + Title + "','" + Content + "')");
+>>>>>>> e9f624a1d24ba0aeb599462df0d3db005411a00d
 			}
 		});
 
