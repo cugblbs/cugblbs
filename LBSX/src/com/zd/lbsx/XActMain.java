@@ -3,6 +3,7 @@ package com.zd.lbsx;
 /*
  * create by Juice Zhu 2014.7.31
  */
+
 import com.zd.lbsx.fragments.XFgBase;
 import com.zd.lbsx.fragments.XFgFind;
 import com.zd.lbsx.fragments.XFgInfo;
@@ -12,17 +13,21 @@ import com.zd.lbsx.fragments.XFgRoute;
 import android.content.Intent;
 import android.view.View;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class XActMain extends XActBase implements
 		android.widget.RadioGroup.OnCheckedChangeListener {
 
 	private RadioGroup radioGroup;
+	private long mLastTimeBackPressed;
+
+	private XFgInfo xFgInfo;
 
 	@Override
 	public void onClick(View v) {
 	}
 
-	@Override 
+	@Override
 	protected int setContentLayout() {
 		return R.layout.act_main;
 	}
@@ -34,7 +39,7 @@ public class XActMain extends XActBase implements
 
 	@Override
 	protected void initListener() {
-		radioGroup.setOnCheckedChangeListener(this); 
+		radioGroup.setOnCheckedChangeListener(this);
 	}
 
 	@Override
@@ -51,7 +56,7 @@ public class XActMain extends XActBase implements
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.content_frame, fg).commit();
 	}
-	
+
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		XFgBase fg = null;

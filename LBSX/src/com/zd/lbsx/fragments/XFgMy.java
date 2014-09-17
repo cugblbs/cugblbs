@@ -35,7 +35,7 @@ public class XFgMy extends XFgBase implements OnClickListener{
 		 //∆Ù”√javascript
 		contentWebView.getSettings().setJavaScriptEnabled(true);
 		contentWebView.setWebViewClient(new MyWebViewClient());
-		contentWebView.loadUrl("http://192.168.1.170:8080/Android/Start");
+		contentWebView.loadUrl("http://192.168.191.1:8080/Android/Start");
 		button.setOnClickListener(new Button.OnClickListener() {
 			public void onClick(View v) { 
 				String Title = title.getText().toString();

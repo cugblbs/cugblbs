@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -94,5 +95,5 @@ public class XFgInfo extends XFgBase implements  OnItemClickListener{
 		intent.putExtra("position", position);
 		intent.setClass(getActivity(),XActInfoItemDetails.class);
 		startActivity(intent);
-	}
+	}	
 }
