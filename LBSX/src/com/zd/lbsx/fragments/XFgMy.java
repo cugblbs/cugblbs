@@ -31,47 +31,17 @@ public class XFgMy extends XFgBase implements OnClickListener {
 		contentWebView = (WebView) v.findViewById(R.id.webview);
 		// ÆôÓÃjavascript
 		contentWebView.getSettings().setJavaScriptEnabled(true);
-<<<<<<< HEAD
-		contentWebView.setWebChromeClient(new WebChromeClient() {
-			@Override
-			public void onProgressChanged(WebView view, int newProgress) {
-				Log.i("page progress-------------------->", newProgress + "");
-				super.onProgressChanged(view, newProgress);
-			}
-		});
-		contentWebView.setWebViewClient(new WebViewClient() {
-			@Override
-			public void onPageStarted(WebView view, String url, Bitmap favicon) {
-				Log.i("page start-------------------->", "page start");
-				super.onPageStarted(view, url, favicon);
-			}
-
-			@Override
-			public void onPageFinished(WebView view, String url) {
-				Log.i("page finished-------------------->", "page finished");
-				super.onPageFinished(view, url);
-=======
-		contentWebView.setWebViewClient(new MyWebViewClient());
-		contentWebView.loadUrl("http://192.168.191.1:8080/Android/Start");
-		button.setOnClickListener(new Button.OnClickListener() {
-			public void onClick(View v) { 
-				String Title = title.getText().toString();
-				String Content = content.getText().toString();
-				contentWebView.loadUrl("javascript:javacalljs('" + Title + "','" + Content + "')");
->>>>>>> e9f624a1d24ba0aeb599462df0d3db005411a00d
-			}
-		});
-
+		//·ÀÖ¹Ìø×ªÏµÍ³ä¯ÀÀÆ÷
+		contentWebView.setWebViewClient(new WebViewClient());
 		ConnectionDetector cd = new ConnectionDetector(this.getActivity()
 				.getApplicationContext());
-		Boolean isInternetPresent = cd.isConnectingToInternet();
-		if (isInternetPresent == false) {
+		if (cd.isConnectingToInternet() == false) {
 			contentWebView.loadUrl("file:///android_asset/InternetError.html");
 		} else {
 			contentWebView.loadUrl("http://192.168.95.1:8080/XgMy");
 		}
 		contentWebView.addJavascriptInterface(this, "post");
-	}
+		}
 
 	@Override
 	protected void initListener() {

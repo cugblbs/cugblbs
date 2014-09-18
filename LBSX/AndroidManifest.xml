@@ -80,19 +80,10 @@
             android:label="@string/app_name"
             android:screenOrientation="sensor" >
         </activity>
-<<<<<<< HEAD
-        <activity
-            android:name="com.zd.lbsx.fragments.XFgInfo">
-=======
+        <activity android:name="com.zd.lbsx.fragments.XFgInfo" >
+        </activity>
         <activity android:name="com.zd.lbsx.XActInfoItemDetails" >
->>>>>>> e9f624a1d24ba0aeb599462df0d3db005411a00d
         </activity>
-        <activity android:name="com.zd.lbsx.PersonalPage" >
-        </activity>
-<<<<<<< HEAD
-            android:name="com.zd.lbsx.PersonalPage">
-=======
->>>>>>> e9f624a1d24ba0aeb599462df0d3db005411a00d
     </application>
 
 </manifest>

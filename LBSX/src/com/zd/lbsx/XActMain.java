@@ -3,29 +3,21 @@ package com.zd.lbsx;
 /*
  * create by Juice Zhu 2014.7.31
  */
-<<<<<<< HEAD
+
 import android.content.Intent;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RadioGroup;
-=======
->>>>>>> e9f624a1d24ba0aeb599462df0d3db005411a00d
-
 import com.zd.lbsx.fragments.XFgBase;
 import com.zd.lbsx.fragments.XFgFind;
 import com.zd.lbsx.fragments.XFgInfo;
 import com.zd.lbsx.fragments.XFgMy;
 import com.zd.lbsx.fragments.XFgRoute;
-
-<<<<<<< HEAD
-=======
 import android.content.Intent;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
->>>>>>> e9f624a1d24ba0aeb599462df0d3db005411a00d
 public class XActMain extends XActBase implements
 		android.widget.RadioGroup.OnCheckedChangeListener {
 
