@@ -19,12 +19,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.baidu.mapapi.BMapManager;
-import com.baidu.mapapi.map.MapController;
 import com.baidu.mapapi.map.MapView;
-import com.baidu.mapapi.search.MKPlanNode;
-import com.baidu.mapapi.search.MKSearch;
-import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.zd.application.MyApplication;
 import com.zd.lbsx.R;
 import com.zd.lbsx.XActSearchRoute;
@@ -160,7 +155,6 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		if (keyString.equals("")) {
 			Toast.makeText(getActivity(), "请重新选择项目", 1000).show();
 		} else {
-			// 在城市里搜索兴趣点
 			mkSearch.poiSearchInCity("北京", keyString);
 		}
 

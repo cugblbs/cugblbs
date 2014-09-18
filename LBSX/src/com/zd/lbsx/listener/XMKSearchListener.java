@@ -1,11 +1,14 @@
 package com.zd.lbsx.listener;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.mapapi.map.ItemizedOverlay;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.OverlayItem;
 import com.baidu.mapapi.map.PoiOverlay;
 import com.baidu.mapapi.map.RouteOverlay;
 import com.baidu.mapapi.search.MKAddrInfo;
@@ -36,8 +39,52 @@ public class XMKSearchListener implements MKSearchListener {
 	}
 
 	@Override
-	public void onGetAddrResult(MKAddrInfo arg0, int arg1) {
-		// TODO Auto-generated method stub
+	public void onGetAddrResult(MKAddrInfo res, int error) {
+		if (error != 0) {
+            String str = String.format("错误号：%d", error);
+            Toast.makeText(mainActivity, str,
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        // 地图移动到该点
+		MyMapView.getController().animateTo(res.geoPt);
+        if (res.type == MKAddrInfo.MK_GEOCODE) {
+            // 地理编码：通过地址检索坐标点
+            String strInfo = String.format("纬度：%f 经度：%f",
+                    res.geoPt.getLatitudeE6() / 1e6,
+                    res.geoPt.getLongitudeE6() / 1e6);
+            Toast.makeText(mainActivity, strInfo,
+                    Toast.LENGTH_LONG).show();
+        }
+        if (res.type == MKAddrInfo.MK_REVERSEGEOCODE) {
+            // 反地理编码：通过坐标点检索详细地址及周边poi
+            String strInfo = res.strAddr;
+            Toast.makeText(mainActivity, strInfo,
+                    Toast.LENGTH_LONG).show();
+
+        }
+        // 生成ItemizedOverlay图层用来标注结果点
+        ItemizedOverlay<OverlayItem> itemOverlay = new ItemizedOverlay<OverlayItem>(
+                null, MyMapView);
+        // 生成Item
+        OverlayItem item = new OverlayItem(res.geoPt, "", null);
+        // 得到需要标在地图上的资源
+        Drawable marker = mainActivity.getResources().getDrawable(
+                R.drawable.ic_launcher);
+        // 为maker定义位置和边界
+        marker.setBounds(0, 0, marker.getIntrinsicWidth(),
+                marker.getIntrinsicHeight());
+        // 给item设置marker
+        item.setMarker(marker);
+        // 在图层上添加item
+        itemOverlay.addItem(item);
+
+        // 清除地图其他图层
+        MyMapView.getOverlays().clear();
+        // 添加一个标注ItemizedOverlay图层
+        MyMapView.getOverlays().add(itemOverlay);
+        // 执行刷新使生效
+        MyMapView.refresh();
 
 	}
 
