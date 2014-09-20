@@ -25,7 +25,8 @@ public class XActSearchRoute extends XActBase implements OnItemSelectedListener{
 			Intent intent=new Intent(this,XActMain.class);
 			intent.putExtra("start", startSpinner.getSelectedItem().toString());
 			intent.putExtra("end", endSpinner.getSelectedItem().toString());
-			startActivity(intent);
+			setResult(200, intent);
+			finish();
 		}
 	}
 

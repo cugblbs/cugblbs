@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
 public class XActMain extends XActBase implements
 		android.widget.RadioGroup.OnCheckedChangeListener {
 
@@ -51,11 +52,7 @@ public class XActMain extends XActBase implements
 		Intent intent = getIntent();
 		String startString = intent.getStringExtra("start");
 		String endsString = intent.getStringExtra("end");
-		if (startString != null && endsString != null) {
-			fg = new XFgRoute(startString, endsString);
-		} else {
-			fg = new XFgRoute();
-		}
+		fg = new XFgRoute();
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.content_frame, fg).commit();
 	}
@@ -83,23 +80,25 @@ public class XActMain extends XActBase implements
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.content_frame, fg).commit();
 	}
-	 @Override
-	 public boolean onKeyDown(int keyCode, KeyEvent event) {
-	 //监听按下返回键
-	 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() ==
-	 KeyEvent.ACTION_DOWN) {
-	 /*已经是最后一个fragment
-	 * getSupportFragmentManager()或者getFragmentManager()
-	 * 具体要看你add to back stack 是用哪个*/
-	 //if no more history in stack
-	 Log.i("s", "main_on_back");
-	 if (XActMain.this.getFragmentManager().getBackStackEntryCount() == 0) {
-	 //显示退出框业务逻辑
-	 event.startTracking();
-	 return true;
-	 }
-	 }
-	 return super.onKeyDown(keyCode, event);
-	 }
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// 监听按下返回键
+		if (keyCode == KeyEvent.KEYCODE_BACK
+				&& event.getAction() == KeyEvent.ACTION_DOWN) {
+			/*
+			 * 已经是最后一个fragment getSupportFragmentManager()或者getFragmentManager()
+			 * 具体要看你add to back stack 是用哪个
+			 */
+			// if no more history in stack
+			Log.i("s", "main_on_back");
+			if (XActMain.this.getFragmentManager().getBackStackEntryCount() == 0) {
+				// 显示退出框业务逻辑
+				finish();
+				return true;
+			}
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 
 }

@@ -3,7 +3,6 @@ package com.zd.lbsx.fragments;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,6 +10,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -72,8 +72,8 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 
 	@Override
 	protected void initData() {
-		 //ArrayAdapter<String> spinAdapter = new ArrayAdapter<String>(
-		//getActivity(), R.layout.spinner_item, new String[] {
+		// ArrayAdapter<String> spinAdapter = new ArrayAdapter<String>(
+		// getActivity(), R.layout.spinner_item, new String[] {
 		// "中国地质大学(北京)9号楼", "中国地质大学(北京)综合楼" });
 
 		list.add("中国地质大学(北京)9号楼");
@@ -89,7 +89,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		list.add("中国地质大学教2楼");
 		list.add("中国地质大学运动场");
 		list.add("中国地质大学图书馆");
-		
+
 		AdpSpinner spinAdapter = new AdpSpinner(getActivity(), list);
 		spin_address.setAdapter(spinAdapter);
 	}
@@ -118,9 +118,6 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		mkSearch = new MKSearch();
 		mkSearch.init(bMapManager,
 				new XMKSearchListener(getActivity(), mapView));
-		if (startString != null && endString != null) {
-			new SearchRouteTask().execute();
-		}
 	}
 
 	@Override
@@ -160,6 +157,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		if (keyString.equals("")) {
 			Toast.makeText(getActivity(), "请重新选择项目", 1000).show();
 		} else {
+			Log.i("onItemSelected------->", "onItemSelected");
 			mkSearch.poiSearchInCity("北京", keyString);
 		}
 
@@ -175,15 +173,14 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		switch (view.getId()) {
 		case R.id.bt_search_route:
 			Intent intent = new Intent(getActivity(), XActSearchRoute.class);
-			startActivity(intent);
+			startActivityForResult(intent, 100);
 			break;
 		default:
 			break;
 		}
-
 	}
 
-	class SearchRouteTask extends AsyncTask<Void, Void, Void> {
+	class SearchRouteTask extends AsyncTask<String, Integer, String> {
 		Geocoder geocoder;
 		GeoPoint sgeoPoint = null;
 		GeoPoint egeoPoint = null;
@@ -191,46 +188,59 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 
 		@Override
 		protected void onPreExecute() {
-			geocoder = new Geocoder(getActivity().getApplicationContext(),
-					Locale.CHINA);
-			startMkPlanNode=new MKPlanNode();
-			endMkPlanNode=new MKPlanNode();
-			super.onPreExecute();
+			Log.i("Task is prepare to run", "Task is prepare to run");
+			geocoder=new Geocoder(getActivity());
+			startMkPlanNode = new MKPlanNode();
+			endMkPlanNode = new MKPlanNode();
 		}
 
 		@Override
-		protected Void doInBackground(Void... arg0) {
+		protected String doInBackground(String... arg0) {
+			Log.i("Task is doinbackground", "Task is doinbackground");
 			try {
-				List<Address> tempList = new ArrayList<Address>();
+				List<Address> tempList=new ArrayList<Address>();
+				tempList = geocoder.getFromLocationName(startString, 1);
 				while (tempList.size() == 0) {
 					tempList = geocoder.getFromLocationName(startString, 1);
 				}
 				Address startAddress = tempList.get(0);
-				tempList.clear();
 				double slon = startAddress.getLongitude();
-				double slat = startAddress.getLatitude();	
-				sgeoPoint = new GeoPoint((int) (slat*1E6), (int)(slon*1E6));
+				double slat = startAddress.getLatitude();
+				sgeoPoint = new GeoPoint((int) (slat * 1E6), (int) (slon * 1E6));
+				tempList = geocoder.getFromLocationName(endString, 1);
 				while (tempList.size() == 0) {
 					tempList = geocoder.getFromLocationName(endString, 1);
 				}
 				Address endAddress = tempList.get(0);
 				double elon = endAddress.getLongitude();
 				double elat = endAddress.getLatitude();
-				egeoPoint = new GeoPoint((int)(elat*1E6), (int)(elon*1E6));
+				egeoPoint = new GeoPoint((int) (elat * 1E6), (int) (elon * 1E6));
 				startMkPlanNode.pt = sgeoPoint;
 				endMkPlanNode.pt = egeoPoint;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return null;
+			return "result";
 		}
 
 		@Override
-		protected void onPostExecute(Void result) {
+		protected void onPostExecute(String result) {
+			Log.i("Task is finished", "Task is finished~");
 			mkSearch.walkingSearch(null, startMkPlanNode, null, endMkPlanNode);
-			super.onPostExecute(result);
 		}
 
+	}
+
+	private SearchRouteTask searchRouteTask = null;
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == 200) {
+			startString=data.getStringExtra("start");
+			endString=data.getStringExtra("end");
+			new SearchRouteTask().execute("");
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 }
