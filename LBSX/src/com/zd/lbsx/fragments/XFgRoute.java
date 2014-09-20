@@ -1,11 +1,22 @@
 package com.zd.lbsx.fragments;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Point;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -25,6 +36,7 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.search.MKPlanNode;
 import com.baidu.mapapi.search.MKSearch;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
+import com.baidu.platform.comapi.map.e;
 import com.zd.application.MyApplication;
 import com.zd.lbsx.R;
 import com.zd.lbsx.XActSearchRoute;
@@ -184,12 +196,13 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		Geocoder geocoder;
 		GeoPoint sgeoPoint = null;
 		GeoPoint egeoPoint = null;
+		GeoPoint centerPoint=null;
 		MKPlanNode startMkPlanNode, endMkPlanNode;
 
 		@Override
 		protected void onPreExecute() {
 			Log.i("Task is prepare to run", "Task is prepare to run");
-			geocoder=new Geocoder(getActivity());
+			geocoder = new Geocoder(getActivity());
 			startMkPlanNode = new MKPlanNode();
 			endMkPlanNode = new MKPlanNode();
 		}
@@ -198,36 +211,37 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		protected String doInBackground(String... arg0) {
 			Log.i("Task is doinbackground", "Task is doinbackground");
 			try {
-				List<Address> tempList=new ArrayList<Address>();
-				tempList = geocoder.getFromLocationName(startString, 1);
-				while (tempList.size() == 0) {
-					tempList = geocoder.getFromLocationName(startString, 1);
-				}
-				Address startAddress = tempList.get(0);
-				double slon = startAddress.getLongitude();
-				double slat = startAddress.getLatitude();
+				JSONObject sret = getLocationInfo(startString);
+				JSONObject eret = getLocationInfo(endString);
+				JSONObject location;
+				location = sret.getJSONObject("result").getJSONObject(
+						"location");
+				double slon = location.getDouble("lng");
+				double slat = location.getDouble("lat");
 				sgeoPoint = new GeoPoint((int) (slat * 1E6), (int) (slon * 1E6));
-				tempList = geocoder.getFromLocationName(endString, 1);
-				while (tempList.size() == 0) {
-					tempList = geocoder.getFromLocationName(endString, 1);
-				}
-				Address endAddress = tempList.get(0);
-				double elon = endAddress.getLongitude();
-				double elat = endAddress.getLatitude();
+				location = eret.getJSONObject("result").getJSONObject(
+						"location");
+				double elon = location.getDouble("lng");
+				double elat = location.getDouble("lat");
+				GeoPoint point = new GeoPoint((int) (39.997161 * 1E6),
+						(int) (116.354123 * 1E6));
 				egeoPoint = new GeoPoint((int) (elat * 1E6), (int) (elon * 1E6));
-				startMkPlanNode.pt = sgeoPoint;
+				startMkPlanNode.pt = point;
 				endMkPlanNode.pt = egeoPoint;
-			} catch (IOException e) {
+				centerPoint=new GeoPoint((int) (point.getLatitudeE6()+egeoPoint.getLatitudeE6())/2, (int) (point.getLongitudeE6()+egeoPoint.getLongitudeE6())/2);
+			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return "result";
 		}
-
+		
 		@Override
 		protected void onPostExecute(String result) {
 			Log.i("Task is finished", "Task is finished~");
 			mkSearch.walkingSearch(null, startMkPlanNode, null, endMkPlanNode);
+			mapView.getController().setCenter(centerPoint);
+			mapView.getController().setZoom((float) 17.5);
 		}
 
 	}
@@ -237,10 +251,40 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == 200) {
-			startString=data.getStringExtra("start");
-			endString=data.getStringExtra("end");
+			startString = data.getStringExtra("start");
+			endString = data.getStringExtra("end");
 			new SearchRouteTask().execute("");
 		}
 		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	public JSONObject getLocationInfo(String string) {
+
+		HttpGet httpGet = new HttpGet(
+				"http://api.map.baidu.com/geocoder/v2/?address=" + string
+						+ "&output=json&ak=KlzWmZKrOkO3P8yxKTwYN9rh");
+		HttpClient client = new DefaultHttpClient();
+		HttpResponse response;
+		StringBuilder stringBuilder = new StringBuilder();
+
+		try {
+			response = client.execute(httpGet);
+			HttpEntity entity = response.getEntity();
+			InputStream stream = entity.getContent();
+			int b;
+			while ((b = stream.read()) != -1) {
+				stringBuilder.append((char) b);
+			}
+		} catch (ClientProtocolException e) {
+		} catch (IOException e) {
+		}
+
+		JSONObject jsonObject = new JSONObject();
+		try {
+			jsonObject = new JSONObject(stringBuilder.toString());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonObject;
 	}
 }

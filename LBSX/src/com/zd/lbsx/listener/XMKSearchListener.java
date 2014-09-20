@@ -24,6 +24,7 @@ import com.baidu.mapapi.search.MKStep;
 import com.baidu.mapapi.search.MKSuggestionResult;
 import com.baidu.mapapi.search.MKTransitRouteResult;
 import com.baidu.mapapi.search.MKWalkingRouteResult;
+import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.zd.lbsx.R;
 
 public class XMKSearchListener implements MKSearchListener {
@@ -159,14 +160,17 @@ public class XMKSearchListener implements MKSearchListener {
 			return;
 		}
 		System.out.println("这是路径显示的回调方法`");
+		MyMapView.getOverlays().clear();
 		RouteOverlay routeOverlay = new RouteOverlay(mainActivity, MyMapView);
 		routeOverlay.setData(result.getPlan(0).getRoute(0));
-		MyMapView.getOverlays().clear();
 		MyMapView.getOverlays().add(routeOverlay);
 		MyMapView.refresh();
+		GeoPoint point = new GeoPoint((int) (39.997161 * 1E6),
+				(int) (116.354123 * 1E6));
 		MKRoute route = result.getPlan(0).getRoute(0);
 		TextView routeTextView = (TextView) mainActivity
 				.findViewById(R.id.route_info);
+		routeTextView.setText("");
 		routeTextView.setVisibility(View.VISIBLE);
 		for (int i = 0; i < route.getNumSteps(); i++) {
 			MKStep step = route.getStep(i);
