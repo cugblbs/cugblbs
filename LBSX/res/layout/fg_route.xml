@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f00"
+    android:background="#fff"
     android:orientation="vertical" >
 
     <com.baidu.mapapi.map.MapView
@@ -47,6 +47,13 @@
         android:layout_width="match_parent"
         android:layout_height="100dip"
         android:layout_alignParentBottom="true"
+        android:visibility="gone" />
+    <TextView
+        android:id="@+id/network_error"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:text="对不起，当前网络不可用"
         android:visibility="gone" />
 
 </RelativeLayout>

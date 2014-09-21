@@ -3,7 +3,6 @@ package com.zd.lbsx.fragments;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -16,8 +15,6 @@ import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Point;
-import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,6 +25,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mapapi.BMapManager;
@@ -36,18 +34,19 @@ import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.search.MKPlanNode;
 import com.baidu.mapapi.search.MKSearch;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
-import com.baidu.platform.comapi.map.e;
 import com.zd.application.MyApplication;
 import com.zd.lbsx.R;
 import com.zd.lbsx.XActSearchRoute;
 import com.zd.lbsx.adpter.AdpSpinner;
 import com.zd.lbsx.listener.XMKSearchListener;
+import com.zd.lbsx.utils.NetWorkUtils;
 
 @SuppressLint("ValidFragment")
 public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		OnClickListener {
 	private Spinner spin_address;
 	private Button bt_search_route;
+	private TextView bt_error;
 	private static BMapManager bMapManager;
 	private MapView mapView;
 	private MKSearch mkSearch;
@@ -74,6 +73,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 	protected void initView(View v) {
 		spin_address = (Spinner) v.findViewById(R.id.spinner);
 		bt_search_route = (Button) v.findViewById(R.id.bt_search_route);
+		bt_error = (TextView) v.findViewById(R.id.network_error);
 	}
 
 	@Override
@@ -116,6 +116,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+
 		mapView = (MapView) getActivity().findViewById(R.id.bmapsView);
 		mapView.setBuiltInZoomControls(false);
 		// 得到mMapView的控制权,可以用它控制和驱动平移和缩放
@@ -130,6 +131,10 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		mkSearch = new MKSearch();
 		mkSearch.init(bMapManager,
 				new XMKSearchListener(getActivity(), mapView));
+		if (!NetWorkUtils.isNetworkAvailable(getActivity())) {
+			Toast.makeText(getActivity(), "网络不给力，请稍后尝试~", Toast.LENGTH_LONG)
+					.show();
+		}
 	}
 
 	@Override
@@ -196,7 +201,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		Geocoder geocoder;
 		GeoPoint sgeoPoint = null;
 		GeoPoint egeoPoint = null;
-		GeoPoint centerPoint=null;
+		GeoPoint centerPoint = null;
 		MKPlanNode startMkPlanNode, endMkPlanNode;
 
 		@Override
@@ -226,22 +231,26 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 				GeoPoint point = new GeoPoint((int) (39.997161 * 1E6),
 						(int) (116.354123 * 1E6));
 				egeoPoint = new GeoPoint((int) (elat * 1E6), (int) (elon * 1E6));
-				startMkPlanNode.pt = point;
+				startMkPlanNode.pt = sgeoPoint;
 				endMkPlanNode.pt = egeoPoint;
-				centerPoint=new GeoPoint((int) (point.getLatitudeE6()+egeoPoint.getLatitudeE6())/2, (int) (point.getLongitudeE6()+egeoPoint.getLongitudeE6())/2);
+				centerPoint = new GeoPoint(
+						(int) (point.getLatitudeE6() + egeoPoint
+								.getLatitudeE6()) / 2,
+						(int) (point.getLongitudeE6() + egeoPoint
+								.getLongitudeE6()) / 2);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return "result";
 		}
-		
+
 		@Override
 		protected void onPostExecute(String result) {
 			Log.i("Task is finished", "Task is finished~");
 			mkSearch.walkingSearch(null, startMkPlanNode, null, endMkPlanNode);
 			mapView.getController().setCenter(centerPoint);
-			mapView.getController().setZoom((float) 17.5);
+			mapView.getController().setZoom((float) 15);
 		}
 
 	}
@@ -286,5 +295,19 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 			e.printStackTrace();
 		}
 		return jsonObject;
+	}
+
+	private void showError() {
+		bt_error.setVisibility(View.VISIBLE);
+		bt_search_route.setVisibility(View.GONE);
+		spin_address.setVisibility(View.GONE);
+		mapView.setVisibility(View.GONE);
+	}
+
+	private void showMap() {
+		bt_error.setVisibility(View.GONE);
+		bt_search_route.setVisibility(View.VISIBLE);
+		spin_address.setVisibility(View.VISIBLE);
+		mapView.setVisibility(View.VISIBLE);
 	}
 }

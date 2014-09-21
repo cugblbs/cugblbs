@@ -150,8 +150,7 @@ public class XMKSearchListener implements MKSearchListener {
 	}
 
 	@Override
-	public void onGetTransitRouteResult(MKTransitRouteResult arg0, int arg1) {
-		// TODO Auto-generated method stub
+	public void onGetTransitRouteResult(MKTransitRouteResult result, int arg1) {
 	}
 
 	@Override
