@@ -54,7 +54,6 @@ public final class R {
         public static final int ItemTime=0x7f090016;
         public static final int ItemTitle=0x7f090014;
         public static final int JutiTitle=0x7f090020;
-        public static final int ListView_Info=0x7f090011;
         public static final int Louzhu=0x7f090022;
         public static final int LouzhuContent=0x7f090024;
         public static final int LouzhuID=0x7f090023;
@@ -65,6 +64,7 @@ public final class R {
         public static final int Reply=0x7f090026;
         public static final int Return=0x7f09001f;
         public static final int TextHead=0x7f090010;
+        public static final int WebView_Info=0x7f090011;
         public static final int action_settings=0x7f09002a;
         public static final int author=0x7f09001d;
         public static final int bmapsView=0x7f090017;
