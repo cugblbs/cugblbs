@@ -14,13 +14,10 @@
         android:textSize="25sp"
         android:background="#F5F5F5"
         />  
-    <ListView  
-        android:id="@+id/ListView_Info" 
-        android:layout_width="wrap_content"   
-        android:layout_height="wrap_content" 
-        android:drawSelectorOnTop="false"
-        android:fadingEdge="none"
-        android:scrollingCache="false"
+    <WebView  
+        android:id="@+id/WebView_Info" 
+        android:layout_width="fill_parent"   
+        android:layout_height="fill_parent" 
         />    
 </LinearLayout>
 
