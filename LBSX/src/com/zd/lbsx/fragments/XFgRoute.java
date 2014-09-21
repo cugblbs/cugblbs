@@ -95,8 +95,6 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		list.add("中国地质大学19号楼");
 		list.add("中国地质大学18号楼");
 		list.add("中国地质大学学生食堂");
-		list.add("中国地质大学教工食堂");
-		list.add("中国地质大学夏日广场");
 		list.add("中国地质大学教3楼");
 		list.add("中国地质大学教2楼");
 		list.add("中国地质大学运动场");
@@ -168,6 +166,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int position,
 			long id) {
+		mapView.getController().setZoom(20);
 		// 获取点中项的字符串
 		String keyString = arg0.getAdapter().getItem(position).toString();
 		// 判断非空

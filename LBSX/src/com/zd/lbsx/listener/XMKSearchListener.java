@@ -156,6 +156,11 @@ public class XMKSearchListener implements MKSearchListener {
 	@Override
 	public void onGetWalkingRouteResult(MKWalkingRouteResult result, int arg1) {
 		if (result == null) {
+			TextView routeTextView = (TextView) mainActivity
+					.findViewById(R.id.route_info);
+			routeTextView.setText("");
+			routeTextView.setVisibility(View.VISIBLE);
+			routeTextView.setText("暂时没有规划出路径~");
 			return;
 		}
 		System.out.println("这是路径显示的回调方法`");
