@@ -1,5 +1,6 @@
 package com.zd.lbsx.fragments;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,9 +15,10 @@ import android.widget.AdapterView.OnItemClickListener;
 
 import com.zd.lbsx.R;
 //import com.zd.lbsx.XActMain.BackWeview;
+import com.zd.lbsx.XActInfoItemDetails;
 
 //public class XFgInfo extends XFgBase implements OnItemClickListener, BackWeview {
-public class XFgInfo extends XFgBase implements OnItemClickListener{
+public class XFgInfo extends XFgBase implements OnItemClickListener {
 	private WebView WebView_Info;
 
 	@Override
@@ -59,43 +61,56 @@ public class XFgInfo extends XFgBase implements OnItemClickListener{
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+	protected void initListener() {
 		// TODO Auto-generated method stub
-
+		/**
+		 * 按键响应，在WebView查看网页时，按返回键的时候按浏览历史退回，如果不做此处理则整个WebView返回退出
+		 */
+		WebView_Info.setOnKeyListener(new OnKeyListener() {
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				Log.i("s1", "XFgInfo_on_back");
+				if (event.getAction() == KeyEvent.ACTION_DOWN) {
+					if (keyCode == KeyEvent.KEYCODE_BACK
+							&& WebView_Info.canGoBack()) { // 表示按返回键 时的操作
+						WebView_Info.goBack(); // 后退
+						return true; // 已处理
+					}
+				}
+				return false;
+			}
+		});
 	}
 
-	 @Override
-	 protected void initListener() {
-	 // TODO Auto-generated method stub
-	 /**
-	 * 按键响应，在WebView查看网页时，按返回键的时候按浏览历史退回，如果不做此处理则整个WebView返回退出
-	 */
-	 WebView_Info.setOnKeyListener(new OnKeyListener() {
-	 @Override
-	 public boolean onKey(View v, int keyCode, KeyEvent event) {
-	 Log.i("s1", "XFgInfo_on_back");
-	 if (event.getAction() == KeyEvent.ACTION_DOWN) {
-	 if (keyCode == KeyEvent.KEYCODE_BACK
-	 && WebView_Info.canGoBack()) { // 表示按返回键 时的操作
-	 WebView_Info.goBack(); // 后退
-	 return true; // 已处理
-	 }
-	 }
-	 return false;
-	 }
-	 });
-	 }
+	// @Override
+	// public boolean backwebview() {
+	// Log.i("back", "back");
+	// if (WebView_Info.canGoBack()) {
+	// WebView_Info.goBack();
+	// return true;
+	// } else {
+	// return false;
+	// }
+	// }
 
-//	@Override
-//	public boolean backwebview() {
-//		Log.i("back", "back");
-//		if (WebView_Info.canGoBack()) {
-//			WebView_Info.goBack();
-//			return true;
-//		} else {
-//			return false;
-//		}
-//	}
-
-
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		/*
+		 * Toast toast = Toast.makeText(getActivity(),
+		 * "点击我",Toast.LENGTH_SHORT); toast.setGravity(Gravity.CENTER, 0, 0);
+		 * //创建图片视图对象 ImageView imageView = new ImageView(getActivity()); //设置图片
+		 * imageView.setImageResource (images[position]);
+		 * 
+		 * //imageView.setImageResource
+		 * ((Integer)listItems_Info.get(position).get("ImageItem")); //获得toast布局
+		 * LinearLayout toastView = (LinearLayout)toast.getView(); //设置此布局为横向的
+		 * toastView.setOrientation(LinearLayout.HORIZONTAL); //将imageView
+		 * 加入到此布局中的第一个位置 toastView.addView(imageView,0); toast.show();
+		 */
+		Intent intent = new Intent();
+		intent.putExtra("position", position);
+		intent.setClass(getActivity(), XActInfoItemDetails.class);
+		startActivity(intent);
+	}
 }

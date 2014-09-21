@@ -19,7 +19,6 @@ public class XActMain extends XActBase implements
 		android.widget.RadioGroup.OnCheckedChangeListener {
 
 	private RadioGroup radioGroup;
-	private XFgBase xfg=null;
 
 	@Override
 	public void onClick(View v) {
@@ -46,11 +45,7 @@ public class XActMain extends XActBase implements
 		Intent intent = getIntent();
 		String startString = intent.getStringExtra("start");
 		String endsString = intent.getStringExtra("end");
-		if (startString != null && endsString != null) {
-			fg = new XFgRoute(startString, endsString);
-		} else {
-			fg = new XFgRoute();
-		}
+		fg = new XFgRoute();
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.content_frame, fg).commit();
 	}
@@ -64,7 +59,7 @@ public class XActMain extends XActBase implements
 			break;
 		case R.id.rb_info:
 			fg = new XFgInfo();
-			//registInterface((XFgInfo) fg);
+			// registInterface((XFgInfo) fg);
 			break;
 		case R.id.rb_my:
 			fg = new XFgMy();
@@ -80,40 +75,23 @@ public class XActMain extends XActBase implements
 				.replace(R.id.content_frame, fg).commit();
 	}
 
-//	public interface BackWeview {
-//		boolean backwebview();
-//	}
-//
-//	private void registInterface(XFgInfo fg) {
-//		xfg = fg;
-//	}
-//
-//	@Override
-//	public void onBackPressed() {
-//		if (xfg != null) {
-//			boolean islastone = ((XFgInfo) xfg).backwebview();
-//			if (!islastone) {
-//				this.finish();
-//			}
-//		}
-//	}
-
-	 @Override
-	 public boolean onKeyDown(int keyCode, KeyEvent event) {
-	 //监听按下返回键
-	 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() ==
-	 KeyEvent.ACTION_DOWN) {
-	 /*已经是最后一个fragment
-	 * getSupportFragmentManager()或者getFragmentManager()
-	 * 具体要看你add to back stack 是用哪个*/
-	 //if no more history in stack
-	 Log.i("s", "main_on_back");
-	 if (XActMain.this.getFragmentManager().getBackStackEntryCount() == 0) {
-	 //显示退出框业务逻辑
-	 finish();
-	 return true;
-	 }
-	 }
-	 return super.onKeyDown(keyCode, event);
-	 }
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// 监听按下返回键
+		if (keyCode == KeyEvent.KEYCODE_BACK
+				&& event.getAction() == KeyEvent.ACTION_DOWN) {
+			/*
+			 * 已经是最后一个fragment getSupportFragmentManager()或者getFragmentManager()
+			 * 具体要看你add to back stack 是用哪个
+			 */
+			// if no more history in stack
+			Log.i("s", "main_on_back");
+			if (XActMain.this.getFragmentManager().getBackStackEntryCount() == 0) {
+				// 显示退出框业务逻辑
+				finish();
+				return true;
+			}
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 }
