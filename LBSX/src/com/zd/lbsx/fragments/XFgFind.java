@@ -8,18 +8,19 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.zd.lbsx.R;
+
 import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import com.zd.lbsx.R;
 
 public class XFgFind extends XFgBase {
 
 	private String basePath = Environment.getExternalStorageDirectory()
 			.getAbsolutePath().toString();
-	private String uploadFile = basePath + "/123.txt";
-	private String srcPath = basePath + "/123.txt";
+	private String uploadFile = basePath + "/gps_stats.txt";
+	private String srcPath = basePath + "/gps_stats.txt";
 	private String actionUrl = "http://192.168.191.1:8080/Upload/upload";
 
 	private Button bt_upload;
@@ -63,7 +64,8 @@ public class XFgFind extends XFgBase {
 
 		System.out.println(Environment.getExternalStorageDirectory()
 				.getAbsolutePath().toString());
-		String uploadUrl = "http://192.168.191.1:8080/Upload/upload";
+		
+		String uploadUrl = "http://192.168.95.1:8080/Upload/upload";
 		String end = "\r\n";
 		String twoHyphens = "--";
 		String boundary = "******";

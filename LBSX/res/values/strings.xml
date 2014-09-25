@@ -7,7 +7,8 @@
     <string name="Title">校园贴吧交流区</string>
     <string name="ret">返回</string>
     <string name="reply">回复楼主</string>
-    
-    
+    <string name="title_activity_xfg_find_new">XFgFind_new</string>
+    <string name="title_activity_xfg_find2">XFgFind2</string>
+    <string name="title_activity_xfg_find1">XFgFind1</string>
 
 </resources>

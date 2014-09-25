@@ -1,5 +1,7 @@
 package com.zd.lbsx.fragments;
 
+import com.zd.lbsx.R;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +13,6 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.zd.lbsx.R;
 
 public class XFgMy extends XFgBase implements OnClickListener{
 	
@@ -37,6 +37,7 @@ public class XFgMy extends XFgBase implements OnClickListener{
 		contentWebView.setWebViewClient(new MyWebViewClient());
 		contentWebView.loadUrl("http://192.168.191.1:8080/Android/Start");
 		button.setOnClickListener(new Button.OnClickListener() {
+			@Override
 			public void onClick(View v) { 
 				String Title = title.getText().toString();
 				String Content = content.getText().toString();
