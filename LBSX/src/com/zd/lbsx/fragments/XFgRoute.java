@@ -1,22 +1,31 @@
 package com.zd.lbsx.fragments;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baidu.mapapi.BMapManager;
@@ -30,12 +39,14 @@ import com.zd.lbsx.R;
 import com.zd.lbsx.XActSearchRoute;
 import com.zd.lbsx.adpter.AdpSpinner;
 import com.zd.lbsx.listener.XMKSearchListener;
+import com.zd.lbsx.utils.NetWorkUtils;
 
 @SuppressLint("ValidFragment")
 public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		OnClickListener {
 	private Spinner spin_address;
 	private Button bt_search_route;
+	private TextView bt_error;
 	private static BMapManager bMapManager;
 	private MapView mapView;
 	private MKSearch mkSearch;
@@ -62,6 +73,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 	protected void initView(View v) {
 		spin_address = (Spinner) v.findViewById(R.id.spinner);
 		bt_search_route = (Button) v.findViewById(R.id.bt_search_route);
+		bt_error = (TextView) v.findViewById(R.id.network_error);
 	}
 
 	@Override
@@ -72,8 +84,8 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 
 	@Override
 	protected void initData() {
-		 //ArrayAdapter<String> spinAdapter = new ArrayAdapter<String>(
-		//getActivity(), R.layout.spinner_item, new String[] {
+		// ArrayAdapter<String> spinAdapter = new ArrayAdapter<String>(
+		// getActivity(), R.layout.spinner_item, new String[] {
 		// "中国地质大学(北京)9号楼", "中国地质大学(北京)综合楼" });
 
 		list.add("中国地质大学(北京)9号楼");
@@ -89,7 +101,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		list.add("中国地质大学教2楼");
 		list.add("中国地质大学运动场");
 		list.add("中国地质大学图书馆");
-		
+
 		AdpSpinner spinAdapter = new AdpSpinner(getActivity(), list);
 		spin_address.setAdapter(spinAdapter);
 	}
@@ -104,6 +116,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+
 		mapView = (MapView) getActivity().findViewById(R.id.bmapsView);
 		mapView.setBuiltInZoomControls(false);
 		// 得到mMapView的控制权,可以用它控制和驱动平移和缩放
@@ -118,8 +131,9 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		mkSearch = new MKSearch();
 		mkSearch.init(bMapManager,
 				new XMKSearchListener(getActivity(), mapView));
-		if (startString != null && endString != null) {
-			new SearchRouteTask().execute();
+		if (!NetWorkUtils.isNetworkAvailable(getActivity())) {
+			Toast.makeText(getActivity(), "网络不给力，请稍后尝试~", Toast.LENGTH_LONG)
+					.show();
 		}
 	}
 
@@ -160,7 +174,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		if (keyString.equals("")) {
 			Toast.makeText(getActivity(), "请重新选择项目", 1000).show();
 		} else {
-			// 在城市里搜索兴趣点
+			Log.i("onItemSelected------->", "onItemSelected");
 			mkSearch.poiSearchInCity("北京", keyString);
 		}
 
@@ -176,62 +190,124 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		switch (view.getId()) {
 		case R.id.bt_search_route:
 			Intent intent = new Intent(getActivity(), XActSearchRoute.class);
-			startActivity(intent);
+			startActivityForResult(intent, 100);
 			break;
 		default:
 			break;
 		}
-
 	}
 
-	class SearchRouteTask extends AsyncTask<Void, Void, Void> {
+	class SearchRouteTask extends AsyncTask<String, Integer, String> {
 		Geocoder geocoder;
 		GeoPoint sgeoPoint = null;
 		GeoPoint egeoPoint = null;
+		GeoPoint centerPoint = null;
 		MKPlanNode startMkPlanNode, endMkPlanNode;
 
 		@Override
 		protected void onPreExecute() {
-			geocoder = new Geocoder(getActivity().getApplicationContext(),
-					Locale.CHINA);
-			startMkPlanNode=new MKPlanNode();
-			endMkPlanNode=new MKPlanNode();
-			super.onPreExecute();
+			Log.i("Task is prepare to run", "Task is prepare to run");
+			geocoder = new Geocoder(getActivity());
+			startMkPlanNode = new MKPlanNode();
+			endMkPlanNode = new MKPlanNode();
 		}
 
 		@Override
-		protected Void doInBackground(Void... arg0) {
+		protected String doInBackground(String... arg0) {
+			Log.i("Task is doinbackground", "Task is doinbackground");
 			try {
-				List<Address> tempList = new ArrayList<Address>();
-				while (tempList.size() == 0) {
-					tempList = geocoder.getFromLocationName(startString, 1);
-				}
-				Address startAddress = tempList.get(0);
-				tempList.clear();
-				double slon = startAddress.getLongitude();
-				double slat = startAddress.getLatitude();	
-				sgeoPoint = new GeoPoint((int) (slat*1E6), (int)(slon*1E6));
-				while (tempList.size() == 0) {
-					tempList = geocoder.getFromLocationName(endString, 1);
-				}
-				Address endAddress = tempList.get(0);
-				double elon = endAddress.getLongitude();
-				double elat = endAddress.getLatitude();
-				egeoPoint = new GeoPoint((int)(elat*1E6), (int)(elon*1E6));
+				JSONObject sret = getLocationInfo(startString);
+				JSONObject eret = getLocationInfo(endString);
+				JSONObject location;
+				location = sret.getJSONObject("result").getJSONObject(
+						"location");
+				double slon = location.getDouble("lng");
+				double slat = location.getDouble("lat");
+				sgeoPoint = new GeoPoint((int) (slat * 1E6), (int) (slon * 1E6));
+				location = eret.getJSONObject("result").getJSONObject(
+						"location");
+				double elon = location.getDouble("lng");
+				double elat = location.getDouble("lat");
+				GeoPoint point = new GeoPoint((int) (39.997161 * 1E6),
+						(int) (116.354123 * 1E6));
+				egeoPoint = new GeoPoint((int) (elat * 1E6), (int) (elon * 1E6));
 				startMkPlanNode.pt = sgeoPoint;
 				endMkPlanNode.pt = egeoPoint;
-			} catch (IOException e) {
+				centerPoint = new GeoPoint(
+						(int) (point.getLatitudeE6() + egeoPoint
+								.getLatitudeE6()) / 2,
+						(int) (point.getLongitudeE6() + egeoPoint
+								.getLongitudeE6()) / 2);
+			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return null;
+			return "result";
 		}
 
 		@Override
-		protected void onPostExecute(Void result) {
+		protected void onPostExecute(String result) {
+			Log.i("Task is finished", "Task is finished~");
 			mkSearch.walkingSearch(null, startMkPlanNode, null, endMkPlanNode);
-			super.onPostExecute(result);
+			mapView.getController().setCenter(centerPoint);
+			mapView.getController().setZoom((float) 15);
 		}
 
+	}
+
+	private SearchRouteTask searchRouteTask = null;
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == 200) {
+			startString = data.getStringExtra("start");
+			endString = data.getStringExtra("end");
+			new SearchRouteTask().execute("");
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
+	public JSONObject getLocationInfo(String string) {
+
+		HttpGet httpGet = new HttpGet(
+				"http://api.map.baidu.com/geocoder/v2/?address=" + string
+						+ "&output=json&ak=KlzWmZKrOkO3P8yxKTwYN9rh");
+		HttpClient client = new DefaultHttpClient();
+		HttpResponse response;
+		StringBuilder stringBuilder = new StringBuilder();
+
+		try {
+			response = client.execute(httpGet);
+			HttpEntity entity = response.getEntity();
+			InputStream stream = entity.getContent();
+			int b;
+			while ((b = stream.read()) != -1) {
+				stringBuilder.append((char) b);
+			}
+		} catch (ClientProtocolException e) {
+		} catch (IOException e) {
+		}
+
+		JSONObject jsonObject = new JSONObject();
+		try {
+			jsonObject = new JSONObject(stringBuilder.toString());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonObject;
+	}
+
+	private void showError() {
+		bt_error.setVisibility(View.VISIBLE);
+		bt_search_route.setVisibility(View.GONE);
+		spin_address.setVisibility(View.GONE);
+		mapView.setVisibility(View.GONE);
+	}
+
+	private void showMap() {
+		bt_error.setVisibility(View.GONE);
+		bt_search_route.setVisibility(View.VISIBLE);
+		spin_address.setVisibility(View.VISIBLE);
+		mapView.setVisibility(View.VISIBLE);
 	}
 }
