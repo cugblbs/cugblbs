@@ -1,5 +1,7 @@
 package com.zd.lbsx.fragments;
 
+import com.zd.lbsx.R;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -31,7 +33,9 @@ public class XFgMy extends XFgBase implements OnClickListener {
 		contentWebView = (WebView) v.findViewById(R.id.webview);
 		// 启用javascript
 		contentWebView.getSettings().setJavaScriptEnabled(true);
-		//防止跳转系统浏览器
+		contentWebView.setWebViewClient(new MyWebViewClient());
+		contentWebView.loadUrl("http://192.168.191.1:8080/Android/Start");
+		// 防止跳转系统浏览器
 		contentWebView.setWebViewClient(new WebViewClient());
 		ConnectionDetector cd = new ConnectionDetector(this.getActivity()
 				.getApplicationContext());
@@ -40,8 +44,9 @@ public class XFgMy extends XFgBase implements OnClickListener {
 		} else {
 			contentWebView.loadUrl("http://192.168.95.1:8080/XgMy");
 		}
+
 		contentWebView.addJavascriptInterface(this, "post");
-		}
+	}
 
 	@Override
 	protected void initListener() {
@@ -80,14 +85,14 @@ public class XFgMy extends XFgBase implements OnClickListener {
 
 	}
 
-	// class MyWebViewClient extends WebViewClient {
-	// @Override
-	// public boolean shouldOverrideUrlLoading(WebView view, String url){
-	// // 重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边
-	// view.loadUrl(url);
-	// return true;
-	// }
-	// }
+	 class MyWebViewClient extends WebViewClient {
+	 @Override
+	 public boolean shouldOverrideUrlLoading(WebView view, String url){
+	 // 重写此方法表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边
+	 view.loadUrl(url);
+	 return true;
+	 }
+	 }
 	// 判断网络是否已链接
 	public class ConnectionDetector {
 

@@ -1,14 +1,14 @@
 package com.zd.lbsx.adpter;
 import java.util.ArrayList;
 
+import com.zd.lbsx.R;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
-import com.zd.lbsx.R;
 
 
 public class AdpSpinner extends BaseAdapter {

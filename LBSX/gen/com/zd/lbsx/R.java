@@ -16,6 +16,11 @@ public final class R {
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
+
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
@@ -48,48 +53,51 @@ public final class R {
         public static final int search=0x7f020015;
     }
     public static final class id {
-        public static final int HuifuList=0x7f090025;
-        public static final int ItemBrief=0x7f090015;
-        public static final int ItemImage=0x7f090013;
-        public static final int ItemTime=0x7f090016;
-        public static final int ItemTitle=0x7f090014;
-        public static final int JutiTitle=0x7f090020;
-        public static final int Louzhu=0x7f090022;
-        public static final int LouzhuContent=0x7f090024;
-        public static final int LouzhuID=0x7f090023;
-        public static final int Personaltouxiang=0x7f090027;
-        public static final int Personauthor=0x7f090028;
-        public static final int PersonlName=0x7f090021;
-        public static final int RelativeLayout01=0x7f090012;
-        public static final int Reply=0x7f090026;
-        public static final int Return=0x7f09001f;
-        public static final int TextHead=0x7f090010;
-        public static final int WebView_Info=0x7f090011;
-        public static final int action_settings=0x7f09002a;
-        public static final int author=0x7f09001d;
-        public static final int bmapsView=0x7f090017;
+        public static final int HuifuList=0x7f090028;
+        public static final int ItemBrief=0x7f090018;
+        public static final int ItemImage=0x7f090016;
+        public static final int ItemTime=0x7f090019;
+        public static final int ItemTitle=0x7f090017;
+        public static final int JutiTitle=0x7f090023;
+        public static final int Louzhu=0x7f090025;
+        public static final int LouzhuContent=0x7f090027;
+        public static final int LouzhuID=0x7f090026;
+        public static final int Personaltouxiang=0x7f09002a;
+        public static final int Personauthor=0x7f09002b;
+        public static final int PersonlName=0x7f090024;
+        public static final int RelativeLayout01=0x7f090015;
+        public static final int Reply=0x7f090029;
+        public static final int Return=0x7f090022;
+        public static final int TextHead=0x7f090013;
+        public static final int WebView_Info=0x7f090014;
+        public static final int action_settings=0x7f09002d;
+        public static final int author=0x7f090020;
+        public static final int bmapsView=0x7f09001a;
         public static final int bt_download=0x7f09000f;
-        public static final int bt_search_route=0x7f090019;
+        public static final int bt_search_route=0x7f09001c;
         public static final int bt_upload=0x7f09000e;
         public static final int content_frame=0x7f090008;
         public static final int destSpnnner=0x7f09000c;
         public static final int destination=0x7f09000b;
+        public static final int imageView=0x7f090012;
         public static final int iv_loading=0x7f090001;
         public static final int ll_tab=0x7f090002;
         public static final int main_tab_group=0x7f090003;
-        public static final int network_error=0x7f09001b;
+        public static final int network_error=0x7f09001e;
         public static final int rb_find=0x7f090007;
         public static final int rb_info=0x7f090005;
         public static final int rb_my=0x7f090006;
         public static final int rb_route=0x7f090004;
-        public static final int route_info=0x7f09001a;
+        public static final int route_info=0x7f09001d;
         public static final int search=0x7f09000d;
-        public static final int spinner=0x7f090018;
-        public static final int spinner_item=0x7f090029;
+        public static final int selectImage=0x7f090010;
+        public static final int spinner=0x7f09001b;
+        public static final int spinner_item=0x7f09002c;
         public static final int start=0x7f090009;
         public static final int startSpinner=0x7f09000a;
-        public static final int title=0x7f09001e;
-        public static final int touxiang=0x7f09001c;
+        public static final int title=0x7f090021;
+        public static final int touxiang=0x7f09001f;
+        public static final int uploadImage=0x7f090011;
         public static final int webview=0x7f090000;
     }
     public static final class layout {
@@ -98,14 +106,15 @@ public final class R {
         public static final int act_main=0x7f030002;
         public static final int act_search_route=0x7f030003;
         public static final int fg_find=0x7f030004;
-        public static final int fg_info=0x7f030005;
-        public static final int fg_info_item=0x7f030006;
-        public static final int fg_my=0x7f030007;
-        public static final int fg_route=0x7f030008;
-        public static final int item=0x7f030009;
-        public static final int onetiezi=0x7f03000a;
-        public static final int personalitem=0x7f03000b;
-        public static final int spinner_item=0x7f03000c;
+        public static final int fg_find1=0x7f030005;
+        public static final int fg_info=0x7f030006;
+        public static final int fg_info_item=0x7f030007;
+        public static final int fg_my=0x7f030008;
+        public static final int fg_route=0x7f030009;
+        public static final int item=0x7f03000a;
+        public static final int onetiezi=0x7f03000b;
+        public static final int personalitem=0x7f03000c;
+        public static final int spinner_item=0x7f03000d;
     }
     public static final class menu {
         public static final int act_loading=0x7f080000;
@@ -117,6 +126,9 @@ public final class R {
         public static final int hello_world=0x7f060002;
         public static final int reply=0x7f060005;
         public static final int ret=0x7f060004;
+        public static final int title_activity_xfg_find1=0x7f060008;
+        public static final int title_activity_xfg_find2=0x7f060007;
+        public static final int title_activity_xfg_find_new=0x7f060006;
     }
     public static final class style {
         /** 
