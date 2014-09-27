@@ -84,6 +84,8 @@
         </activity>
         <activity android:name="com.zd.lbsx.fragments.XFgInfo" >
         </activity>
+
+
     </application>
 
 </manifest>
