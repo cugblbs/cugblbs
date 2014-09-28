@@ -59,7 +59,7 @@ public class XFgInfo extends XFgBase implements OnItemClickListener {
 		// WebView_Info.addJavascriptInterface(new DemoJavaScriptInterface(),
 		// "demo");
 
-		WebView_Info.loadUrl("http://192.168.95.1:8080/XgMy/Shownewslist");
+		WebView_Info.loadUrl("http://geekzhu.xicp.net/XgMy/Shownewslist");
 
 	}
 

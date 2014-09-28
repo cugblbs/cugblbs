@@ -29,7 +29,7 @@ import android.widget.Toast;
 
 public class XFgFind1 extends XFgBase implements OnClickListener{
 	 private static final String TAG = "uploadImage";
-	    private static String requestURL = "http://192.168.95.1:8080/Upload/upload";
+	    private static String requestURL = "http://geekzhu.xicp.net/XgMy/upload";
 	    private Button selectImage,uploadImage;
 	    private ImageView imageView;
 	    
