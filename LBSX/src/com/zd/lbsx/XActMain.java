@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 
 import com.zd.lbsx.fragments.XFgBase;
 import com.zd.lbsx.fragments.XFgFind;
+import com.zd.lbsx.fragments.XFgFind1;
 import com.zd.lbsx.fragments.XFgInfo;
 import com.zd.lbsx.fragments.XFgMy;
 import com.zd.lbsx.fragments.XFgRoute;
@@ -65,7 +66,7 @@ public class XActMain extends XActBase implements
 			fg = new XFgMy();
 			break;
 		case R.id.rb_find:
-			fg = new XFgFind();
+			fg = new XFgFind1();
 			break;
 		default:
 			fg = new XFgRoute();

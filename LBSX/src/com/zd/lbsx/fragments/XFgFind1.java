@@ -64,7 +64,7 @@ public class XFgFind1 extends XFgBase implements OnClickListener{
 	            Intent intent = new Intent();
 //	            intent.setType("image/*");
 	            intent.setType("application/doc");
-	            intent.setAction(Intent.ACTION_GET_CONTENT);
+	            intent.setAction(Intent.ACTION_GET_CONTENT);       
 	            startActivityForResult(intent, 1);
 	            break;
 	        case R.id.uploadImage:
