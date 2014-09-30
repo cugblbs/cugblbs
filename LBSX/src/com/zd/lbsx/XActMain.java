@@ -13,6 +13,7 @@ import com.zd.lbsx.fragments.XFgBase;
 import com.zd.lbsx.fragments.XFgFind;
 import com.zd.lbsx.fragments.XFgFind1;
 import com.zd.lbsx.fragments.XFgInfo;
+import com.zd.lbsx.fragments.XFgInfoNew;
 import com.zd.lbsx.fragments.XFgMy;
 import com.zd.lbsx.fragments.XFgRoute;
 

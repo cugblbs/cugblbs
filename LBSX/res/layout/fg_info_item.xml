@@ -15,7 +15,7 @@
     <!-- 定义textview，作为列表项的一部分 -->
 
     <TextView
-        android:id="@+id/ItemTitle"
+        android:id="@+id/itemTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="55dp"
