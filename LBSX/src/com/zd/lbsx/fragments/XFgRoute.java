@@ -168,13 +168,24 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 			long id) {
 		mapView.getController().setZoom(20);
 		// 获取点中项的字符串
-		String keyString = arg0.getAdapter().getItem(position).toString();
+		final String keyString = arg0.getAdapter().getItem(position).toString();
 		// 判断非空
 		if (keyString.equals("")) {
 			Toast.makeText(getActivity(), "请重新选择项目", 1000).show();
 		} else {
 			Log.i("onItemSelected------->", "onItemSelected");
-			mkSearch.poiSearchInCity("北京", keyString);
+			new Thread(new Runnable() {
+
+				@Override
+				public void run() {
+					int k = mkSearch.poiSearchInCity("北京", keyString);
+					while (k != 0) {
+						k = mkSearch.poiSearchInCity("北京", keyString);
+					}
+
+				}
+			}).start();
+
 		}
 
 	}
@@ -237,6 +248,12 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 								.getLatitudeE6()) / 2,
 						(int) (point.getLongitudeE6() + egeoPoint
 								.getLongitudeE6()) / 2);
+				int k=mkSearch.walkingSearch(null, startMkPlanNode, null,
+						endMkPlanNode);
+				while(k!=0){
+					k=mkSearch.walkingSearch(null, startMkPlanNode, null,
+							endMkPlanNode);
+				}
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -247,7 +264,6 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		@Override
 		protected void onPostExecute(String result) {
 			Log.i("Task is finished", "Task is finished~");
-			mkSearch.walkingSearch(null, startMkPlanNode, null, endMkPlanNode);
 			mapView.getController().setCenter(centerPoint);
 			mapView.getController().setZoom((float) 15);
 		}

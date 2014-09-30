@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
@@ -75,6 +76,7 @@ public class XFgInfo extends XFgBase implements OnItemClickListener {
 		// WebView_Info.addJavascriptInterface(new DemoJavaScriptInterface(),
 		// "demo");
 
+		WebView_Info.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
 		WebView_Info.loadUrl("http://geekzhu.xicp.net/XgMy/Shownewslist");
 
 	}

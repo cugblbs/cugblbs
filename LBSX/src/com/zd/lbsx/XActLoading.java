@@ -6,12 +6,14 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class XActLoading extends XActBase {
 
 	private Handler mHandler=new Handler();
 	private ImageView iv_loading;
+	private TextView tv;
 	private TranslateAnimation translateAnimation;
 	@Override
 	protected int setContentLayout() {
@@ -21,11 +23,13 @@ public class XActLoading extends XActBase {
 	@Override
 	protected void initView() {
 		iv_loading=(ImageView)findViewById(R.id.iv_loading);
+		tv=(TextView) findViewById(R.id.app_name);
 		translateAnimation = new TranslateAnimation(0.0f, 0.0f,0.0f,-250.0f);  
 		//设置动画时间                
 		translateAnimation.setDuration(1000);  
 		translateAnimation.setFillAfter(true);
-		iv_loading.startAnimation(translateAnimation);  
+		iv_loading.startAnimation(translateAnimation); 
+		tv.startAnimation(translateAnimation);
 	}
 
 	@Override

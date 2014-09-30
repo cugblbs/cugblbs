@@ -9,7 +9,17 @@
         android:id="@+id/iv_loading"
         android:layout_width="60dip"
         android:layout_height="60dip"
-        android:layout_centerInParent="true" 
-        android:background="@drawable/img_loading"/>
+        android:layout_centerInParent="true"
+        android:background="@drawable/img_loading" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_loading" 
+        android:layout_marginTop="5dip"
+        android:layout_centerHorizontal="true"
+        android:text="LBSX，精彩就在身边。"
+        />
 
 </RelativeLayout>

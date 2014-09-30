@@ -64,7 +64,7 @@ public class XFgFind extends XFgBase {
 
 		System.out.println(Environment.getExternalStorageDirectory()
 				.getAbsolutePath().toString());
-		
+
 		String uploadUrl = "http://192.168.95.1:8080/Upload/upload";
 		String end = "\r\n";
 		String twoHyphens = "--";
@@ -91,13 +91,14 @@ public class XFgFind extends XFgBase {
 					+ end);
 			dos.writeBytes(end);
 
-//			String filePathString="Environment.getExternalStorageDirectory().getAbsolutePath()"
-//					+ "/books";
-//			
-//			File file = new File(filePathString);
-//			if (!file.exists())
-//				file.mkdir();
-//			File trueFile = new File(srcPath);
+			// String
+			// filePathString="Environment.getExternalStorageDirectory().getAbsolutePath()"
+			// + "/books";
+			//
+			// File file = new File(filePathString);
+			// if (!file.exists())
+			// file.mkdir();
+			// File trueFile = new File(srcPath);
 			FileInputStream fis = new FileInputStream(srcPath);
 			byte[] buffer = new byte[8192]; // 8k
 			int count = 0;
