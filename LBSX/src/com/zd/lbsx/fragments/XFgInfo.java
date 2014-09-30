@@ -11,6 +11,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
+import android.widget.ProgressBar;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.zd.lbsx.R;
@@ -21,6 +22,7 @@ import com.zd.lbsx.fragments.XFgMy.ConnectionDetector;
 //public class XFgInfo extends XFgBase implements OnItemClickListener, BackWeview {
 public class XFgInfo extends XFgBase implements OnItemClickListener {
 	private WebView WebView_Info;
+	private ProgressBar progressBar;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,21 +37,35 @@ public class XFgInfo extends XFgBase implements OnItemClickListener {
 	@Override
 	protected void initView(View v) {
 		WebView_Info = (WebView) v.findViewById(R.id.WebView_Info);
+		progressBar=(ProgressBar) v.findViewById(R.id.progress);
 	}
 
 	@Override
 	protected void initData() {
-		WebView_Info.setWebChromeClient(new WebChromeClient());
+		WebView_Info.setWebChromeClient(new WebChromeClient(){
+			@Override
+			public void onProgressChanged(WebView view, int newProgress) {
+				if(newProgress<80){
+					progressBar.setProgress(newProgress);
+				}else {
+					progressBar.setVisibility(View.GONE);
+				}
+				super.onProgressChanged(view, newProgress);
+			}
+			
+		});
 		WebView_Info.setWebViewClient(new WebViewClient() {
 			@Override
 			public void onPageStarted(WebView view, String url, Bitmap favicon) {
 				Log.i("page start-------------------->", "page start");
+				progressBar.setVisibility(View.VISIBLE);
 				super.onPageStarted(view, url, favicon);
 			}
 
 			@Override
 			public void onPageFinished(WebView view, String url) {
 				Log.i("page finished-------------------->", "page finished");
+				progressBar.setVisibility(View.GONE);
 				super.onPageFinished(view, url);
 			}
 		});

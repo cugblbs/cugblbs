@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-     <TextView    
-        android:id="@+id/TextHead"  
-        android:layout_width="fill_parent"   
-        android:layout_height="wrap_content"  
-        android:text="校 园动态  "
-        android:paddingLeft="100dp"
-        android:paddingRight="100dp"
-        android:textColor="#808000"
-        android:textSize="25sp"
-        android:background="#F5F5F5"
-        />  
-    <WebView  
-        android:id="@+id/WebView_Info" 
-        android:layout_width="fill_parent"   
-        android:layout_height="fill_parent" 
-        />    
-</LinearLayout>
 
-     
+    <TextView
+        android:id="@+id/TextHead"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F5F5"
+        android:gravity="center_horizontal"
+        android:text="校园动态 "
+        android:textColor="#808000"
+        android:textSize="25sp" />
+
+    <WebView
+        android:id="@+id/WebView_Info"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="40dip" />
+
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dip" />
+
+</FrameLayout>

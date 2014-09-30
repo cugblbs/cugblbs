@@ -16,11 +16,13 @@ import android.view.View.OnKeyListener;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.zd.lbsx.R;
 
 public class XFgMy extends XFgBase implements OnClickListener {
 	private WebView contentWebView = null;
+	private ProgressBar progressBar;
 
 	@Override
 	protected int setFragmentView() {
@@ -31,12 +33,25 @@ public class XFgMy extends XFgBase implements OnClickListener {
 	@Override
 	protected void initView(View v) {
 		contentWebView = (WebView) v.findViewById(R.id.webview);
+		progressBar=(ProgressBar) v.findViewById(R.id.progress);
 		// ÆôÓÃjavascript
 		contentWebView.getSettings().setJavaScriptEnabled(true);
 		contentWebView.setWebViewClient(new MyWebViewClient());
 		contentWebView.loadUrl("http://192.168.191.1:8080/Android/Start");
 		// ·ÀÖ¹Ìø×ªÏµÍ³ä¯ÀÀÆ÷
 		contentWebView.setWebViewClient(new WebViewClient());
+		contentWebView.setWebChromeClient(new WebChromeClient(){
+			@Override
+			public void onProgressChanged(WebView view, int newProgress) {
+				if(newProgress<80){
+					progressBar.setVisibility(View.VISIBLE);
+					progressBar.setProgress(newProgress);
+				}else {
+					progressBar.setVisibility(View.GONE);
+				}
+				super.onProgressChanged(view, newProgress);
+			}
+		});
 		ConnectionDetector cd = new ConnectionDetector(this.getActivity()
 				.getApplicationContext());
 		if (cd.isConnectingToInternet() == false) {
