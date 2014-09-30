@@ -16,6 +16,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import com.zd.lbsx.R;
 //import com.zd.lbsx.XActMain.BackWeview;
 import com.zd.lbsx.XActInfoItemDetails;
+import com.zd.lbsx.fragments.XFgMy.ConnectionDetector;
 
 //public class XFgInfo extends XFgBase implements OnItemClickListener, BackWeview {
 public class XFgInfo extends XFgBase implements OnItemClickListener {
@@ -57,7 +58,9 @@ public class XFgInfo extends XFgBase implements OnItemClickListener {
 		// webSet.setJavaScriptEnabled(true);
 		// WebView_Info.addJavascriptInterface(new DemoJavaScriptInterface(),
 		// "demo");
-		WebView_Info.loadUrl("http://192.168.95.1:8080/XgMy/Shownewslist");
+
+		WebView_Info.loadUrl("http://geekzhu.xicp.net/XgMy/Shownewslist");
+
 	}
 
 	@Override

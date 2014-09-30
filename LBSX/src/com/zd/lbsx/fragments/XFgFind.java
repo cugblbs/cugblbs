@@ -21,7 +21,7 @@ public class XFgFind extends XFgBase {
 			.getAbsolutePath().toString();
 	private String uploadFile = basePath + "/gps_stats.txt";
 	private String srcPath = basePath + "/gps_stats.txt";
-	private String actionUrl = "http://192.168.191.1:8080/Upload/upload";
+	private String actionUrl = "http://192.168.95.1:8080/Upload/upload";
 
 	private Button bt_upload;
 

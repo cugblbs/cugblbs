@@ -42,7 +42,7 @@ public class XFgMy extends XFgBase implements OnClickListener {
 		if (cd.isConnectingToInternet() == false) {
 			contentWebView.loadUrl("file:///android_asset/InternetError.html");
 		} else {
-			contentWebView.loadUrl("http://192.168.95.1:8080/XgMy");
+			contentWebView.loadUrl("http://geekzhu.xicp.net/XgMy");
 		}
 
 		contentWebView.addJavascriptInterface(this, "post");
