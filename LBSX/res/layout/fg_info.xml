@@ -11,7 +11,7 @@
         android:background="#F5F5F5"
         android:gravity="center_horizontal"
         android:text="校园动态 "
-        android:textColor="#808000"
+        android:textColor="#000"
         android:textSize="25sp" />
 
     <WebView

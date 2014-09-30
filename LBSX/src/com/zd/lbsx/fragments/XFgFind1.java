@@ -71,6 +71,8 @@ public class XFgFind1 extends XFgBase implements OnClickListener{
 //	        	Log.i("<><><><>", picPath);
 	        	if(picPath == null){
 	        		Log.i("<<<<<","picPath是空的");
+	        		Toast.makeText(getActivity(), "请先选择文档~", Toast.LENGTH_SHORT).show();
+	        		return;
 	        	}
 	            final File file = new File(picPath);
 	            if(file!=null)

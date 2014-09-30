@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
-    <Button  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="选择文档"
-    android:id="@+id/selectImage"
-    />
-    <Button  
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="上传文档"
-    android:id="@+id/uploadImage"
-    />
-     <ImageView  
-    android:layout_width="wrap_content" 
-    android:layout_height="wrap_content" 
-    android:id="@+id/imageView"
-    />
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TextHead"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#F5F5F5"
+        android:gravity="center_horizontal"
+        android:text="资源共享"
+        android:textColor="#000"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/selectImage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:text="选择文档" />
+
+    <Button
+        android:id="@+id/uploadImage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="上传文档" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

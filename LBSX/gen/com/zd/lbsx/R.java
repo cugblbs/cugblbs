@@ -33,24 +33,28 @@ public final class R {
         public static final int b=0x7f020001;
         public static final int c=0x7f020002;
         public static final int cat=0x7f020003;
-        public static final int cugb=0x7f020004;
-        public static final int d=0x7f020005;
-        public static final int dog=0x7f020006;
-        public static final int e=0x7f020007;
-        public static final int f=0x7f020008;
-        public static final int friend=0x7f020009;
-        public static final int g=0x7f02000a;
-        public static final int h=0x7f02000b;
-        public static final int i=0x7f02000c;
-        public static final int ic_launcher=0x7f02000d;
-        public static final int img_loading=0x7f02000e;
-        public static final int j=0x7f02000f;
-        public static final int love=0x7f020010;
-        public static final int lovely=0x7f020011;
-        public static final int q=0x7f020012;
-        public static final int radio_img=0x7f020013;
-        public static final int radio_selector=0x7f020014;
-        public static final int search=0x7f020015;
+        public static final int chat=0x7f020004;
+        public static final int cugb=0x7f020005;
+        public static final int d=0x7f020006;
+        public static final int dog=0x7f020007;
+        public static final int e=0x7f020008;
+        public static final int f=0x7f020009;
+        public static final int friend=0x7f02000a;
+        public static final int g=0x7f02000b;
+        public static final int h=0x7f02000c;
+        public static final int i=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int img_loading=0x7f02000f;
+        public static final int j=0x7f020010;
+        public static final int love=0x7f020011;
+        public static final int lovely=0x7f020012;
+        public static final int map=0x7f020013;
+        public static final int message=0x7f020014;
+        public static final int q=0x7f020015;
+        public static final int radio_img=0x7f020016;
+        public static final int radio_selector=0x7f020017;
+        public static final int search=0x7f020018;
+        public static final int share=0x7f020019;
     }
     public static final class id {
         public static final int HuifuList=0x7f090029;
@@ -68,7 +72,7 @@ public final class R {
         public static final int RelativeLayout01=0x7f090016;
         public static final int Reply=0x7f09002a;
         public static final int Return=0x7f090023;
-        public static final int TextHead=0x7f090013;
+        public static final int TextHead=0x7f090010;
         public static final int WebView_Info=0x7f090014;
         public static final int action_settings=0x7f09002e;
         public static final int author=0x7f090021;
@@ -79,7 +83,7 @@ public final class R {
         public static final int content_frame=0x7f090008;
         public static final int destSpnnner=0x7f09000c;
         public static final int destination=0x7f09000b;
-        public static final int imageView=0x7f090012;
+        public static final int imageView=0x7f090013;
         public static final int iv_loading=0x7f090001;
         public static final int ll_tab=0x7f090002;
         public static final int main_tab_group=0x7f090003;
@@ -91,14 +95,14 @@ public final class R {
         public static final int rb_route=0x7f090004;
         public static final int route_info=0x7f09001e;
         public static final int search=0x7f09000d;
-        public static final int selectImage=0x7f090010;
+        public static final int selectImage=0x7f090011;
         public static final int spinner=0x7f09001c;
         public static final int spinner_item=0x7f09002d;
         public static final int start=0x7f090009;
         public static final int startSpinner=0x7f09000a;
         public static final int title=0x7f090022;
         public static final int touxiang=0x7f090020;
-        public static final int uploadImage=0x7f090011;
+        public static final int uploadImage=0x7f090012;
         public static final int webview=0x7f090000;
     }
     public static final class layout {

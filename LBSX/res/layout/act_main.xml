@@ -27,7 +27,7 @@
                 android:layout_weight="1.0"
                 android:background="@drawable/radio_selector"
                 android:checked="true"
-                android:drawableTop="@drawable/radio_img"
+                android:drawableTop="@drawable/map"
                 android:gravity="center"
                 android:text="路线" />
 
@@ -36,7 +36,7 @@
                 style="@style/TabButton"
                 android:layout_weight="1.0"
                 android:background="@drawable/radio_selector"
-                android:drawableTop="@drawable/radio_img"
+                android:drawableTop="@drawable/message"
                 android:gravity="center"
                 android:text="信息" />
 
@@ -45,18 +45,18 @@
                 style="@style/TabButton"
                 android:layout_weight="1.0"
                 android:background="@drawable/radio_selector"
-                android:drawableTop="@drawable/radio_img"
+                android:drawableTop="@drawable/chat"
                 android:gravity="center"
-                android:text="我的" />
+                android:text="交流" />
 
             <RadioButton
                 android:id="@+id/rb_find"
                 style="@style/TabButton"
                 android:layout_weight="1.0"
                 android:background="@drawable/radio_selector"
-                android:drawableTop="@drawable/radio_img"
+                android:drawableTop="@drawable/share"
                 android:gravity="center"
-                android:text="发现" />
+                android:text="共享" />
         </RadioGroup>
     </LinearLayout>
 
