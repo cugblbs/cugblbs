@@ -64,9 +64,8 @@ public class InfoAdapter extends BaseAdapter {
 		viewHolder.img.setImageResource(R.drawable.friend);
 		Info info = mList.get(pos);
 		viewHolder.tv_title.setText(info.getNews_name());
-		viewHolder.tv_bref.setText(info.getNews_content().substring(0, 8)
-				+ "...");
-		viewHolder.tv_time.setText(new Date().getDate());
+		viewHolder.tv_bref.setText(info.getNews_content().substring(0, 25)+"...");
+		viewHolder.tv_time.setText("");
 		return contentView;
 	}
 

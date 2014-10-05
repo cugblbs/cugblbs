@@ -7,5 +7,6 @@
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="lib" path="libs/baidumapapi_v2_3_5.jar"/>
 	<classpathentry kind="lib" path="libs/locSDK_4.0.jar"/>
+	<classpathentry kind="lib" path="E:/cugblbs/LBSX/libs/jsoup-1.8.1.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

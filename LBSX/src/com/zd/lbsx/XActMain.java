@@ -60,7 +60,7 @@ public class XActMain extends XActBase implements
 			fg = new XFgRoute();
 			break;
 		case R.id.rb_info:
-			fg = new XFgInfo();
+			fg = new XFgInfoNew();
 			// registInterface((XFgInfo) fg);
 			break;
 		case R.id.rb_my:
