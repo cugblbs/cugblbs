@@ -104,11 +104,11 @@ public class UploadUtil {
                  * 获取响应码  200=成功
                  * 当响应成功，获取响应的流  
                  */
-                int res = conn.getResponseCode();  
-                Log.e(TAG, "response code:"+res);
+//                int res = conn.getResponseCode();  
+//                Log.e(TAG, "response code:"+res);
 //                if(res==200)
 //                {
-                    Log.e(TAG, "request success");
+//                    Log.e(TAG, "request success");
                     InputStream input =  conn.getInputStream();
                     StringBuffer sb1= new StringBuffer();
                     int ss ;
@@ -117,7 +117,7 @@ public class UploadUtil {
                         sb1.append((char)ss);
                     }
                     result = sb1.toString();
-                    Log.e(TAG, "result : "+ result);
+//                    Log.e(TAG, "result : "+ result);
 //                }
 //                else{
 //                    Log.e(TAG, "request error");

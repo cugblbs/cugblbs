@@ -178,11 +178,13 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 
 				@Override
 				public void run() {
-					int k = mkSearch.poiSearchInCity("北京", keyString);
+					int k=0;
+					k = mkSearch.poiSearchInCity("北京", keyString);
+					Log.i("mksearch", "搜索");
 					while (k != 0) {
+						Log.i("mksearch", "搜索");
 						k = mkSearch.poiSearchInCity("北京", keyString);
 					}
-
 				}
 			}).start();
 
@@ -248,7 +250,8 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 								.getLatitudeE6()) / 2,
 						(point.getLongitudeE6() + egeoPoint
 								.getLongitudeE6()) / 2);
-				int k=mkSearch.walkingSearch(null, startMkPlanNode, null,
+				int k=0;
+				k=mkSearch.walkingSearch(null, startMkPlanNode, null,
 						endMkPlanNode);
 				while(k!=0){
 					k=mkSearch.walkingSearch(null, startMkPlanNode, null,

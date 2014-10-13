@@ -77,7 +77,7 @@ public class XFgFind1 extends XFgBase implements OnClickListener{
 	            	new Thread(new Runnable() {
 
 						@Override
-						public void run() {
+						public void run() { 
 							String request = null;
 							
 							request = UploadUtil.uploadFile( file, requestURL, handler);
