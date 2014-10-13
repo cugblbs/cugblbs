@@ -2,13 +2,6 @@ package com.zd.lbsx.fragments;
 
 import java.util.ArrayList;
 
-import com.zd.lbsx.R;
-import com.zd.lbsx.XActInfoDetail;
-import com.zd.lbsx.adpter.InfoAdapter;
-import com.zd.lbsx.bean.Info;
-import com.zd.lbsx.utils.HtmlCaptureUtils;
-import com.zd.lbsx.utils.StringUtils;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -16,6 +9,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+
+import com.zd.lbsx.R;
+import com.zd.lbsx.XActInfoDetail;
+import com.zd.lbsx.adpter.InfoAdapter;
+import com.zd.lbsx.bean.Info;
+import com.zd.lbsx.utils.HtmlCaptureUtils;
+import com.zd.lbsx.utils.StringUtils;
 
 public class XFgInfoNew extends XFgBase {
 
@@ -98,7 +98,7 @@ public class XFgInfoNew extends XFgBase {
 		protected void onPostExecute(Void result) {
 			if (!StringUtils.isEmpty(contentString)) {
 				Intent intent=new Intent();			
-				intent.putExtra("content", contentString);
+				intent.putExtra("content", "  "+contentString);
 				intent.setClass(getActivity(), XActInfoDetail.class);
 				startActivity(intent);
 			} else {

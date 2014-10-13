@@ -3,10 +3,10 @@ package com.zd.lbsx;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.View.OnClickListener;
 /*
  * create by Juice Zhu
  */
+import android.view.View.OnClickListener;
 
 public abstract class XActBase extends FragmentActivity implements OnClickListener {
 

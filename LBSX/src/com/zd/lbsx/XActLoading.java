@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+
 public class XActLoading extends XActBase {
 
 	private Handler mHandler=new Handler();

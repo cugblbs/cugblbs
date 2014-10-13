@@ -1,11 +1,11 @@
 package com.zd.lbsx;
 
-import com.zd.lbsx.utils.StringUtils;
-
-import android.app.Activity;
 import android.content.Intent;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
+
+import com.zd.lbsx.utils.StringUtils;
 
 public class XActInfoDetail extends XActBase {
 
@@ -24,6 +24,7 @@ public class XActInfoDetail extends XActBase {
 	@Override
 	protected void initView() {
 		tv_detail=(TextView) findViewById(R.id.tv_detail);
+		tv_detail.setMovementMethod(ScrollingMovementMethod.getInstance()); 
 	}
 
 	@Override

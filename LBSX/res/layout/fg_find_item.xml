@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout01"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/local_item_selector"
+    android:paddingBottom="4dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="12dp"
+    android:paddingTop="12dp" >
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="学习资料.doc"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/tv_size"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:layout_marginTop="10dip"
+        android:text="1.2m"
+        android:textColor="#A9A9A9"
+        android:textSize="14dp" />
+
+    <CheckBox
+        android:id="@+id/cbx_select"
+        android:layout_width="24dip"
+        android:layout_height="24dip"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dip"
+        android:visibility="gone"
+        android:focusable="false"
+        android:button="@drawable/checked" />
+
+</RelativeLayout>

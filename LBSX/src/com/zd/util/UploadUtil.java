@@ -13,7 +13,7 @@ import java.util.UUID;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import com.zd.util.ProgressDialog;;
+
 
 public class UploadUtil {
 	private static final String TAG = "uploadFile";

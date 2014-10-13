@@ -1,22 +1,17 @@
 package com.zd.lbsx.adpter;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.zip.Inflater;
-
-import com.baidu.location.r;
-import com.zd.lbsx.R;
-import com.zd.lbsx.bean.Info;
 
 import android.content.Context;
-import android.media.Image;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.zd.lbsx.R;
+import com.zd.lbsx.bean.Info;
 
 public class InfoAdapter extends BaseAdapter {
 

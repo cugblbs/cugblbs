@@ -8,9 +8,10 @@
         android:id="@+id/tv_detail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dip"
         android:background="#F5F5F5"
-        android:gravity="center_horizontal"
         android:textColor="#000"
+        android:scrollbars="vertical"
         android:textSize="16sp" />
 
 </FrameLayout>

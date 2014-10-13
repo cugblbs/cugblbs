@@ -244,9 +244,9 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 				startMkPlanNode.pt = sgeoPoint;
 				endMkPlanNode.pt = egeoPoint;
 				centerPoint = new GeoPoint(
-						(int) (point.getLatitudeE6() + egeoPoint
+						(point.getLatitudeE6() + egeoPoint
 								.getLatitudeE6()) / 2,
-						(int) (point.getLongitudeE6() + egeoPoint
+						(point.getLongitudeE6() + egeoPoint
 								.getLongitudeE6()) / 2);
 				int k=mkSearch.walkingSearch(null, startMkPlanNode, null,
 						endMkPlanNode);
@@ -265,7 +265,7 @@ public class XFgRoute extends XFgBase implements OnItemSelectedListener,
 		protected void onPostExecute(String result) {
 			Log.i("Task is finished", "Task is finished~");
 			mapView.getController().setCenter(centerPoint);
-			mapView.getController().setZoom((float) 15);
+			mapView.getController().setZoom(15);
 		}
 
 	}

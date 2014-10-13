@@ -8,7 +8,7 @@
         android:id="@+id/TextHead"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#F5F5F5"
+        android:background="@color/radio_background"
         android:gravity="center_horizontal"
         android:text="资源共享"
         android:textColor="#000"

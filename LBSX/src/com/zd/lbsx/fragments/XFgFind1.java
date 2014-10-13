@@ -2,30 +2,24 @@ package com.zd.lbsx.fragments;
 
 import java.io.File;
 
-import com.zd.lbsx.R;
-import com.zd.util.UploadUtil;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.zd.lbsx.R;
+import com.zd.util.UploadUtil;
 
 public class XFgFind1 extends XFgBase implements OnClickListener{
 	 private static final String TAG = "uploadImage";

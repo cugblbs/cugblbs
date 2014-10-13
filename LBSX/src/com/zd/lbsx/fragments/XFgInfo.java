@@ -8,17 +8,15 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
-import android.widget.ProgressBar;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ProgressBar;
 
 import com.zd.lbsx.R;
-//import com.zd.lbsx.XActMain.BackWeview;
 import com.zd.lbsx.XActInfoItemDetails;
-import com.zd.lbsx.fragments.XFgMy.ConnectionDetector;
+//import com.zd.lbsx.XActMain.BackWeview;
 
 //public class XFgInfo extends XFgBase implements OnItemClickListener, BackWeview {
 public class XFgInfo extends XFgBase implements OnItemClickListener {

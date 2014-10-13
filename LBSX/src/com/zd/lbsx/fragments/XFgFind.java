@@ -8,12 +8,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import com.zd.lbsx.R;
-
 import android.os.Environment;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import com.zd.lbsx.R;
 
 public class XFgFind extends XFgBase {
 
